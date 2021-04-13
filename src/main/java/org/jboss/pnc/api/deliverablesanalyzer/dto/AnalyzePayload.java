@@ -19,13 +19,18 @@ import java.io.Serializable;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
+import lombok.extern.jackson.Jacksonized;
+
 import org.jboss.pnc.api.dto.Request;
 
 @ToString
 @Getter
 @AllArgsConstructor
+@Jacksonized
+@Builder
 public class AnalyzePayload implements Serializable {
     private List<String> urls;
 
