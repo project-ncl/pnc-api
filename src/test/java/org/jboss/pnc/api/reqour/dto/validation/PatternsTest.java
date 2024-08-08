@@ -7,13 +7,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class PatternsTest {
 
     @Test
-    void nonScpLike_basicOneWithoutGitSuffix_isValid() {
-        String externalUrl = "github.com/repo";
+    void nonScpLike_withoutGitSuffix_isValid() {
+        String externalUrl = "https://github.com/repo";
 
         ExternalURLValidator.ParsedURL url = ExternalURLValidator.parseURL(externalUrl);
 
         assertThat(url).isNotNull();
-        assertThat(url.getProtocol()).isNull();
+        assertThat(url.getProtocol()).isEqualTo("https");
         assertThat(url.getUser()).isNull();
         assertThat(url.getHost()).isEqualTo("github.com");
         assertThat(url.getPort()).isEqualTo(-1);
@@ -23,12 +23,12 @@ public class PatternsTest {
 
     @Test
     void nonScpLike_basicOneWithGitSuffix_isValid() {
-        String externalUrl = "github.com/my-repo.git";
+        String externalUrl = "git+ssh://github.com/my-repo.git";
 
         ExternalURLValidator.ParsedURL url = ExternalURLValidator.parseURL(externalUrl);
 
         assertThat(url).isNotNull();
-        assertThat(url.getProtocol()).isNull();
+        assertThat(url.getProtocol()).isEqualTo("git+ssh");
         assertThat(url.getUser()).isNull();
         assertThat(url.getHost()).isEqualTo("github.com");
         assertThat(url.getPort()).isEqualTo(-1);
@@ -53,12 +53,12 @@ public class PatternsTest {
 
     @Test
     void nonScpLike_withUser_isValid() {
-        String externalUrl = "user@github.com/my-repo";
+        String externalUrl = "https://user@github.com/my-repo";
 
         ExternalURLValidator.ParsedURL url = ExternalURLValidator.parseURL(externalUrl);
 
         assertThat(url).isNotNull();
-        assertThat(url.getProtocol()).isNull();
+        assertThat(url.getProtocol()).isEqualTo("https");
         assertThat(url.getUser()).isEqualTo("user");
         assertThat(url.getHost()).isEqualTo("github.com");
         assertThat(url.getPort()).isEqualTo(-1);
@@ -130,6 +130,15 @@ public class PatternsTest {
     }
 
     @Test
+    void nonScpLike_withoutProtocol_isInvalid() {
+        String externalUrl = "github.com/repo";
+
+        ExternalURLValidator.ParsedURL url = ExternalURLValidator.parseURL(externalUrl);
+
+        assertThat(url).isNull();
+    }
+
+    @Test
     void nonScpLike_isScpLike_isInvalid() {
         String externalUrl = "github.com:project/repo";
 
@@ -157,18 +166,12 @@ public class PatternsTest {
     }
 
     @Test
-    void scpLike_basicOne_isValid() {
+    void scpLike_withoutUser_isInvalid() {
         String externalUrl = "github.com:my-repo.git";
 
         ExternalURLValidator.ParsedURL url = ExternalURLValidator.parseURL(externalUrl);
 
-        assertThat(url).isNotNull();
-        assertThat(url.getProtocol()).isNull();
-        assertThat(url.getUser()).isNull();
-        assertThat(url.getHost()).isEqualTo("github.com");
-        assertThat(url.getPort()).isEqualTo(-1);
-        assertThat(url.getOrganization()).isNull();
-        assertThat(url.getRepository()).isEqualTo("my-repo");
+        assertThat(url).isNull();
     }
 
     @Test

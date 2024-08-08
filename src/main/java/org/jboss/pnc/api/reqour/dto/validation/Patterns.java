@@ -22,12 +22,12 @@ import java.util.regex.Pattern;
 public class Patterns {
 
     /**
-     * This pattern matches the following format: [scheme://][user@]host[:port][/organization]/repository[.git]
+     * This pattern matches the following format: scheme://[user@]host[:port][/organization]/repository[.git]
      */
     public static class NonScpLike {
 
         public static final Pattern PATTERN = Pattern.compile(
-                "^(?:(?<protocol>[\\w+]+)://)?(?:(?<user>[\\w-]+)@)?(?<host>[\\w.]+)(?::(?<port>\\d+))?(?:/(?<organization>[\\w-]+))*?/(?<repository>[\\w-]+(?:\\.git)?)$");
+                "^(?<protocol>[\\w+]+)://(?:(?<user>[\\w-]+)@)?(?<host>[\\w.]+)(?::(?<port>\\d+))?(?:/(?<organization>[\\w-]+))*?/(?<repository>[\\w-]+(?:\\.git)?)$");
 
         public static final String PROTOCOL_GROUP = "protocol";
         public static final String USER_GROUP = "user";
@@ -38,13 +38,12 @@ public class Patterns {
     }
 
     /**
-     * This pattern matches the following format:
-     * [scheme://][user@]host[:port]:[workspace/][organization/]repository.git
+     * This pattern matches the following format: [scheme://]user@host[:port]:[workspace/][organization/]repository.git
      */
     public static class ScpLike {
 
         public static final Pattern PATTERN = Pattern.compile(
-                "^(?:(?<protocol>[\\w+]+)://)?(?:(?<user>[\\w-]+)@)?(?<host>[\\w.]+)(?::(?<port>\\d+))?:(?:(?<organization>[\\w-]+)/)*?(?<repository>[\\w-]+)\\.git$");
+                "^(?:(?<protocol>[\\w+]+)://)?(?<user>[\\w-]+)@(?<host>[\\w.]+)(?::(?<port>\\d+))?:(?:(?<organization>[\\w-]+)/)*?(?<repository>[\\w-]+)\\.git$");
 
         public static final String PROTOCOL_GROUP = "protocol";
         public static final String USER_GROUP = "user";
