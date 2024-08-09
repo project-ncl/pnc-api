@@ -120,6 +120,12 @@
             <version>3.26.3</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>6.2.5.Final</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
