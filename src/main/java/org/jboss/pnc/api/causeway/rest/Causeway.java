@@ -15,27 +15,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package org.jboss.pnc.api.causeway.rest;
 
-package org.jboss.pnc.api.dto;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Builder;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.jackson.Jacksonized;
+import org.jboss.pnc.api.causeway.dto.push.BuildPushRequest;
+import org.jboss.pnc.api.causeway.dto.untag.UntagRequest;
+import org.jboss.pnc.api.dto.ComponentVersion;
 
 import javax.validation.Valid;
-import java.util.concurrent.TimeUnit;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.core.MediaType;
 
-@RequiredArgsConstructor
-@Data
-@Builder(builderClassName = "Builder")
-@Jacksonized
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class HeartbeatConfig {
-    @Valid
-    private final Request request;
-    private final Long delay;
-    private final TimeUnit delayTimeUnit;
+@Consumes(MediaType.APPLICATION_JSON)
+@Path("/")
+public interface Causeway {
+    @POST
+    @Path("/push-build")
+    void importBuild(@Valid BuildPushRequest buildPushRequest);
 
+    @POST
+    @Path("/untag")
+    void untagBuild(@Valid UntagRequest request);
+
+    @GET
+    @Path("/version")
+    ComponentVersion getVersion();
 }
