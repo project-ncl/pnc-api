@@ -26,6 +26,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NonNull;
 
+import javax.validation.Valid;
+
 /**
  *
  * @author Honza Brázdil &lt;janinko.g@gmail.com&gt;
@@ -34,8 +36,10 @@ import lombok.NonNull;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UntagRequest {
 
+    @Valid
     private final Request callback;
     @NonNull
+    @Valid
     private final TaggedBuild build;
 
     @JsonCreator
