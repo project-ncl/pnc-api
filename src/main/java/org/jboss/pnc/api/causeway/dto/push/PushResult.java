@@ -15,27 +15,37 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-package org.jboss.pnc.api.dto;
+package org.jboss.pnc.api.causeway.dto.push;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Builder;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.jackson.Jacksonized;
+import org.jboss.pnc.api.enums.ResultStatus;
 
-import javax.validation.Valid;
-import java.util.concurrent.TimeUnit;
-
-@RequiredArgsConstructor
 @Data
-@Builder(builderClassName = "Builder")
+@Builder
 @Jacksonized
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class HeartbeatConfig {
-    @Valid
-    private final Request request;
-    private final Long delay;
-    private final TimeUnit delayTimeUnit;
+public class PushResult {
 
+    /**
+     * ID of pnc build.
+     */
+    private String buildId;
+
+    /**
+     * Build id assigned by Brew.
+     */
+    private Integer brewBuildId;
+
+    /**
+     * Link to the Brew build.
+     */
+    private String brewBuildUrl;
+
+    /**
+     * Result status of the push.
+     */
+    private ResultStatus result;
 }
