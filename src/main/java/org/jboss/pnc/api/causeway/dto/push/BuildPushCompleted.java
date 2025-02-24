@@ -17,9 +17,12 @@
  */
 package org.jboss.pnc.api.causeway.dto.push;
 
+import org.jboss.pnc.api.dto.Request;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Builder;
+import lombok.NonNull;
 import lombok.Value;
 import lombok.extern.jackson.Jacksonized;
 
@@ -28,7 +31,14 @@ import lombok.extern.jackson.Jacksonized;
 @Builder
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BuildPushCompleted {
+
+    @NonNull
     String operationId;
+    @NonNull
     int brewBuildId;
+    @NonNull
     String brewBuildUrl;
+
+    @NonNull
+    Request callback;
 }
