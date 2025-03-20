@@ -17,6 +17,7 @@
  */
 package org.jboss.pnc.api.enums;
 
+@Deprecated(since = "3.0.7", forRemoval = true)
 public enum LicenseSource {
     UNKNOWN, POM, POM_XML, BUNDLE_LICENSE, TEXT
 }
