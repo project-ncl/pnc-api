@@ -19,8 +19,6 @@ package org.jboss.pnc.api.deliverablesanalyzer.dto;
 
 import java.io.Serializable;
 
-import org.jboss.pnc.api.enums.LicenseSource;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -44,6 +42,6 @@ public class LicenseInfo implements Serializable {
 
     private String spdxLicenseId;
 
-    private LicenseSource source;
+    private String sourceUrl;
 
 }
