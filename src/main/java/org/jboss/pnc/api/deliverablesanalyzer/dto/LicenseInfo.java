@@ -19,6 +19,8 @@ package org.jboss.pnc.api.deliverablesanalyzer.dto;
 
 import java.io.Serializable;
 
+import org.jboss.pnc.api.enums.LicenseSource;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -41,6 +43,9 @@ public class LicenseInfo implements Serializable {
     private final String url;
 
     private String spdxLicenseId;
+
+    @Deprecated(since = "3.0.7", forRemoval = true)
+    private LicenseSource source;
 
     private String sourceUrl;
 
