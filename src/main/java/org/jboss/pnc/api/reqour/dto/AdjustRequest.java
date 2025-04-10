@@ -6,10 +6,12 @@ package org.jboss.pnc.api.reqour.dto;
 
 import java.util.Map;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import org.jboss.pnc.api.constants.BuildConfigurationParameterKeys;
+import org.jboss.pnc.api.dto.HeartbeatConfig;
 import org.jboss.pnc.api.dto.Request;
 import org.jboss.pnc.api.enums.AlignmentPreference;
 import org.jboss.pnc.api.enums.BuildType;
@@ -97,4 +99,10 @@ public class AdjustRequest {
      */
     @NotBlank
     String taskId;
+
+    /**
+     * Heartbeat config in order to send heartbeat to Rex.
+     */
+    @Valid
+    HeartbeatConfig heartbeatConfig;
 }
