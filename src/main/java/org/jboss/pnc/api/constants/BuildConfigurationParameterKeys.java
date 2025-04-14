@@ -39,7 +39,10 @@ public enum BuildConfigurationParameterKeys {
                     + "single URL per line."),
     BUILDER_POD_MEMORY(
             "Specify the amount of memory the builder pod should have available. Enter number of GiB, for example '4'"
-                    + " = 4 GiB, '5.5' = 5632 MiB. Use this responsibly and only when needed!");
+                    + " = 4 GiB, '5.5' = 5632 MiB. Use this responsibly and only when needed!"),
+    ALIGNMENT_POD_MEMORY(
+            "Same as 'BUILDER_POD_MEMORY', but for the alignment pod."),
+            ;
 
     /** The description to be shown to a user. */
     private String desc;
