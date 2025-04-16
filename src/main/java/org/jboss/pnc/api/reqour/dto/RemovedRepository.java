@@ -43,7 +43,8 @@ public class RemovedRepository {
     String id;
 
     /**
-     * URL of the removed repository
+     * URL of the removed repository.<br/>
+     * Has to be a {@link String} (and not e.g. {@link URI}), see NCL-9084 for further info.
      */
-    URI url;
+    String url;
 }
