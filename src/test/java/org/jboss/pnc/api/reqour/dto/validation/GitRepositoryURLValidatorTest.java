@@ -31,7 +31,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-public class ValidGitRepositoryURLValidatorTest {
+public class GitRepositoryURLValidatorTest {
 
     private static ValidatorFactory validatorFactory;
     private static Validator validator;
@@ -52,47 +52,47 @@ public class ValidGitRepositoryURLValidatorTest {
 
     @Test
     public void validate_whenValidNonScpLikeExternalURL_returnsEmptyViolations() {
-        URLRequest request = new URLRequest("https://github.com/project/repo.git");
+        UrlRequest request = new UrlRequest("https://github.com/project/repo.git");
 
-        Set<ConstraintViolation<URLRequest>> violations = validator.validate(request);
+        Set<ConstraintViolation<UrlRequest>> violations = validator.validate(request);
 
         assertThat(violations).isEmpty();
     }
 
     @Test
     public void validate_whenValidScpLikeExternalURL_returnsEmptyViolations() {
-        URLRequest request = new URLRequest("git@github.com:project/repo.git");
+        UrlRequest request = new UrlRequest("git@github.com:project/repo.git");
 
-        Set<ConstraintViolation<URLRequest>> violations = validator.validate(request);
+        Set<ConstraintViolation<UrlRequest>> violations = validator.validate(request);
 
         assertThat(violations).isEmpty();
     }
 
     @Test
     public void validate_whenFileProtocol_returnsEmptyViolations() {
-        URLRequest request = new URLRequest("file:///tmp/foo/bar");
+        UrlRequest request = new UrlRequest("file:///tmp/foo/bar");
 
-        Set<ConstraintViolation<URLRequest>> violations = validator.validate(request);
+        Set<ConstraintViolation<UrlRequest>> violations = validator.validate(request);
 
         assertThat(violations).isEmpty();
     }
 
     @Test
     public void validate_whenInvalidExternalURL_returnsNonEmptyViolations() {
-        URLRequest request = new URLRequest("git@github.com/project/repo.git");
+        UrlRequest request = new UrlRequest("git@github.com/project/repo.git");
 
-        Set<ConstraintViolation<URLRequest>> violations = validator.validate(request);
+        Set<ConstraintViolation<UrlRequest>> violations = validator.validate(request);
 
         assertThat(violations).isNotEmpty();
     }
 
-    private static class URLRequest {
+    private static class UrlRequest {
 
-        @ValidGitRepositoryURL
-        private final String externalURL;
+        @GitRepositoryURL
+        private final String annotatedUrl;
 
-        public URLRequest(String externalURL) {
-            this.externalURL = externalURL;
+        public UrlRequest(String annotatedUrl) {
+            this.annotatedUrl = annotatedUrl;
         }
     }
 }

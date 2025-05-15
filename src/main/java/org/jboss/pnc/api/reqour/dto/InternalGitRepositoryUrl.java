@@ -4,7 +4,7 @@
  */
 package org.jboss.pnc.api.reqour.dto;
 
-import org.jboss.pnc.api.reqour.dto.validation.ValidGitRepositoryURL;
+import org.jboss.pnc.api.reqour.dto.validation.GitRepositoryURL;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -24,12 +24,12 @@ public class InternalGitRepositoryUrl {
     /**
      * Git repository URL that you can use to clone anonymously
      */
-    @ValidGitRepositoryURL
+    @GitRepositoryURL
     String readonlyUrl;
 
     /**
      * Git repository URL that you can use for pushing of the content
      */
-    @ValidGitRepositoryURL
+    @GitRepositoryURL
     String readwriteUrl;
 }

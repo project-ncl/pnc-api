@@ -21,7 +21,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import org.jboss.pnc.api.dto.Request;
-import org.jboss.pnc.api.reqour.dto.validation.ValidGitRepositoryURL;
+import org.jboss.pnc.api.reqour.dto.validation.GitRepositoryURL;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -41,13 +41,13 @@ public class RepositoryCloneRequest {
     /**
      * Original repository to sync from
      */
-    @ValidGitRepositoryURL
+    @GitRepositoryURL
     String originRepoUrl;
 
     /**
      * Repository to sync to
      */
-    @ValidGitRepositoryURL
+    @GitRepositoryURL
     String targetRepoUrl;
 
     /**

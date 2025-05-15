@@ -27,13 +27,16 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 /**
- * Annotation inspired by {@link org.hibernate.validator.constraints.URL}.
+ * Constraint annotation validating repository URL, which should meet one of the following:<br/>
+ * - {@link Patterns.ScpLike#PATTERN}<br/>
+ * - {@link Patterns.NonScpLike#PATTERN}<br/>
+ * - {@link Patterns.FileLike#PATTERN}<br/>
  */
 @Documented
 @Constraint(validatedBy = GitRepositoryURLValidator.class)
 @Target({ ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ValidGitRepositoryURL {
+public @interface GitRepositoryURL {
 
     String message() default "Invalid URL of the git repository";
 

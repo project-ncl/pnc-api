@@ -15,7 +15,7 @@ import org.jboss.pnc.api.dto.HeartbeatConfig;
 import org.jboss.pnc.api.dto.Request;
 import org.jboss.pnc.api.enums.AlignmentPreference;
 import org.jboss.pnc.api.enums.BuildType;
-import org.jboss.pnc.api.reqour.dto.validation.ValidGitRepositoryURL;
+import org.jboss.pnc.api.reqour.dto.validation.GitRepositoryURL;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -55,9 +55,9 @@ public class AdjustRequest {
     boolean sync;
 
     /**
-     * Git repository URL of the origin
+     * Git repository URL of the origin. May be nullable (in case there is not upstream present).
      */
-    @ValidGitRepositoryURL
+    @GitRepositoryURL
     String originRepoUrl;
 
     /**

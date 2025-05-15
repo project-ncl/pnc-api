@@ -28,9 +28,10 @@ import lombok.Builder;
 import lombok.Value;
 
 /**
- * Validates whether the provided URL is of the format {@link Patterns.NonScpLike} or {@link Patterns.ScpLike}.
+ * Validates whether the provided URL is of the format {@link Patterns.NonScpLike}, {@link Patterns.ScpLike}, or
+ * {@link Patterns.FileLike}.
  */
-public class GitRepositoryURLValidator implements ConstraintValidator<ValidGitRepositoryURL, String> {
+public class GitRepositoryURLValidator implements ConstraintValidator<GitRepositoryURL, String> {
 
     private String protocol;
     private String user;
@@ -40,7 +41,7 @@ public class GitRepositoryURLValidator implements ConstraintValidator<ValidGitRe
     private String repository;
 
     @Override
-    public void initialize(ValidGitRepositoryURL annotation) {
+    public void initialize(GitRepositoryURL annotation) {
         this.protocol = annotation.protocol();
         this.user = annotation.user();
         this.host = annotation.host();
@@ -111,7 +112,7 @@ public class GitRepositoryURLValidator implements ConstraintValidator<ValidGitRe
         return null;
     }
 
-    private boolean filledButNotMatchingParsed(String valueFromAnnotation, String parsedValue) {
+    static boolean filledButNotMatchingParsed(String valueFromAnnotation, String parsedValue) {
         return valueFromAnnotation != null && !valueFromAnnotation.isEmpty()
                 && !valueFromAnnotation.equals(parsedValue);
     }
