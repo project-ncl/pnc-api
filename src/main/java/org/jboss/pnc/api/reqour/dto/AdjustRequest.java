@@ -26,7 +26,7 @@ import lombok.extern.jackson.Jacksonized;
 /**
  * Request DTO used when doing the build alignment.
  */
-@Builder
+@Builder(toBuilder = true)
 @Value
 @Jacksonized
 @JsonIgnoreProperties(ignoreUnknown = true)
