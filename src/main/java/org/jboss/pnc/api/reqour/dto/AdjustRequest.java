@@ -18,6 +18,7 @@ import org.jboss.pnc.api.enums.BuildType;
 import org.jboss.pnc.api.reqour.dto.validation.NullableGitRepositoryURL;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonRawValue;
 
 import lombok.Builder;
 import lombok.Value;
@@ -65,6 +66,7 @@ public class AdjustRequest {
      * {@link org.jboss.pnc.api.constants.BuildConfigurationParameterKeys#ALIGNMENT_PARAMETERS} parameters, which are
      * used during alignment phase.
      */
+    @JsonRawValue // raw value because we want to force that '\' of the '\$' (this escaping is done by reqour) is not escaped additionally once more, i.e., into '\\$' (because environment variable containing such '\\$' sequence is not valid, and that fails to start adjuster)
     Map<BuildConfigurationParameterKeys, String> buildConfigParameters;
 
     /**
