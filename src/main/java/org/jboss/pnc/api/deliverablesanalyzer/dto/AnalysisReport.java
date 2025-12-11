@@ -20,6 +20,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.jboss.pnc.api.dto.ExceptionLog;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -47,6 +49,9 @@ public class AnalysisReport implements Serializable {
     /** Flag indicating if analysis was finished successfully */
     private boolean success;
 
+    /** Exception log if any caught exception occurs during the process */
+    private ExceptionLog exceptionLog;
+
     public AnalysisReport(List<FinderResult> results) {
         this.results = results;
         success = true;
@@ -54,5 +59,12 @@ public class AnalysisReport implements Serializable {
 
     public AnalysisReport() {
         success = false;
+    }
+
+    public static AnalysisReport failWithExceptionLog(ExceptionLog exceptionLog) {
+        return AnalysisReport.builder()
+                .success(false)
+                .exceptionLog(exceptionLog)
+                .build();
     }
 }

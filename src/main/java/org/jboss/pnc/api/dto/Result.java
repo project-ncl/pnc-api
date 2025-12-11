@@ -33,4 +33,6 @@ import lombok.extern.jackson.Jacksonized;
 @Builder
 public class Result {
     private ResultStatus result;
+
+    private ExceptionLog exceptionLog;
 }
