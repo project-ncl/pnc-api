@@ -27,9 +27,10 @@
     </parent>
 
     <groupId>org.jboss.pnc</groupId>
-    <artifactId>pnc-api</artifactId>
+    <artifactId>pnc-api-parent</artifactId>
     <version>3.2.5-SNAPSHOT</version>
-    <name>pnc-api</name>
+    <packaging>pom</packaging>
+    <name>pnc-api-parent</name>
 
     <licenses>
         <license>
@@ -38,18 +39,25 @@
             <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
         </license>
     </licenses>
+
     <scm>
         <connection>scm:git:git@github.com:project-ncl/pnc-api.git</connection>
         <url>scm:git:git@github.com:project-ncl/pnc-api.git</url>
         <developerConnection>scm:git:git@github.com:project-ncl/pnc-api.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
+
     <developers>
         <developer>
             <organization>RedHat</organization>
             <organizationUrl>http://www.redhat.com</organizationUrl>
         </developer>
     </developers>
+
+    <modules>
+        <module>constants</module>
+        <module>api</module>
+    </modules>
 
     <repositories>
         <repository>
@@ -62,6 +70,7 @@
             </snapshots>
         </repository>
     </repositories>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -94,7 +103,20 @@
 
         <tagSuffix />
     </properties>
+    <dependencyManagement>
         <dependencies>
+            <!-- Project modules, to support cross-module dependencies -->
+            <dependency>
+                <groupId>org.jboss.pnc</groupId>
+                <artifactId>pnc-api-constants</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.pnc</groupId>
+                <artifactId>pnc-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>javax.ws.rs</groupId>
                 <artifactId>javax.ws.rs-api</artifactId>
@@ -126,6 +148,7 @@
                 <artifactId>microprofile-openapi-api</artifactId>
                 <version>${version.microprofile-openapi-api}</version>
             </dependency>
+
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
                 <artifactId>junit-jupiter-api</artifactId>
@@ -151,6 +174,8 @@
                 <scope>test</scope>
             </dependency>
         </dependencies>
+    </dependencyManagement>
+
     <build>
         <plugins>
             <plugin>

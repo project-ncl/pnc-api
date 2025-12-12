@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import org.jboss.pnc.api.enums.Qualifier;
+import org.jboss.pnc.api.dependencyanalyzer.enums.Qualifier;
 
 import lombok.Builder;
 import lombok.Getter;
