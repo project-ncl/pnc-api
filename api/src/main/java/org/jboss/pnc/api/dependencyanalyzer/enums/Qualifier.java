@@ -1,4 +1,4 @@
-package org.jboss.pnc.api.enums;
+package org.jboss.pnc.api.dependencyanalyzer.enums;
 
 import static java.text.MessageFormat.format;
 
