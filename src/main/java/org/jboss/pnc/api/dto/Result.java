@@ -34,5 +34,5 @@ import lombok.extern.jackson.Jacksonized;
 public class Result {
     private ResultStatus result;
 
-    private ExceptionLog exceptionLog;
+    private ExceptionResolution exceptionResolution;
 }

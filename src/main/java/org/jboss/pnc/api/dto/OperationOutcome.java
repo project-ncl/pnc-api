@@ -31,11 +31,11 @@ public class OperationOutcome {
         return OperationOutcome.builder().result(OperationResult.FAILED).build();
     }
 
-    public static OperationOutcome process(OperationResult operationResult, ExceptionLog exceptionLog) {
+    public static OperationOutcome process(OperationResult operationResult, ExceptionResolution exceptionResolution) {
         return OperationOutcome.builder()
                 .result(operationResult)
-                .reason(exceptionLog.getReason())
-                .proposal(exceptionLog.getProposal())
+                .reason(exceptionResolution.getReason())
+                .proposal(exceptionResolution.getProposal())
                 .build();
     }
 }

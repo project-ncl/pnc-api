@@ -20,7 +20,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import org.jboss.pnc.api.dto.ExceptionLog;
+import org.jboss.pnc.api.dto.ExceptionResolution;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -50,7 +50,7 @@ public class AnalysisReport implements Serializable {
     private boolean success;
 
     /** Exception log if any caught exception occurs during the process */
-    private ExceptionLog exceptionLog;
+    private ExceptionResolution exceptionResolution;
 
     public AnalysisReport(List<FinderResult> results) {
         this.results = results;
@@ -61,10 +61,10 @@ public class AnalysisReport implements Serializable {
         success = false;
     }
 
-    public static AnalysisReport failWithExceptionLog(ExceptionLog exceptionLog) {
+    public static AnalysisReport failWithResolution(ExceptionResolution exceptionResolution) {
         return AnalysisReport.builder()
                 .success(false)
-                .exceptionLog(exceptionLog)
+                .exceptionResolution(exceptionResolution)
                 .build();
     }
 }

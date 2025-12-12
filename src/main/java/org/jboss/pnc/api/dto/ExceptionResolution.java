@@ -10,7 +10,7 @@ import lombok.extern.jackson.Jacksonized;
 @Jacksonized
 @Builder(builderClassName = "Builder")
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ExceptionLog {
+public class ExceptionResolution {
 
     /** String representing exception if any */
     private String reason;

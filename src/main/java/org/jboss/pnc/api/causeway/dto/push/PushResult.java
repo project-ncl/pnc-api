@@ -17,7 +17,7 @@
  */
 package org.jboss.pnc.api.causeway.dto.push;
 
-import org.jboss.pnc.api.dto.ExceptionLog;
+import org.jboss.pnc.api.dto.ExceptionResolution;
 import org.jboss.pnc.api.enums.ResultStatus;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -55,5 +55,5 @@ public class PushResult {
     /**
      * Exception log if any caught exception occurs during the process
      */
-    private ExceptionLog exceptionLog;
+    private ExceptionResolution exceptionResolution;
 }
