@@ -44,6 +44,10 @@ public enum JobNotificationType {
      */
     BUILD_CONFIG_CREATION,
     /**
+     * Job type representing generic operation-type job.
+     */
+    OPERATION,
+    /**
      * Job type representing a change in the generic setting.
      */
     GENERIC_SETTING,
