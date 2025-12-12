@@ -64,79 +64,104 @@
     </repositories>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <compiler-plugin.version>3.8.1</compiler-plugin.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+
+        <!-- Specifications -->
+        <version.javax.ws.rs-api>2.1.1</version.javax.ws.rs-api>
+        <version.javax.json.bind-api>1.0</version.javax.json.bind-api>
+        <version.javax.validation-api>2.0.1.Final</version.javax.validation-api>
+        <version.microprofile-openapi-api>2.0.1</version.microprofile-openapi-api>
+
+        <!-- Regular dependencies -->
+        <version.lombok>1.18.36</version.lombok>
+        <version.jackson-databind>2.17.1</version.jackson-databind>
+        <version.orch-dto>3.3.2-SNAPSHOT</version.orch-dto>
+
+        <!-- Test dependencies -->
+        <version.hibernate-validator>6.2.5.Final</version.hibernate-validator>
+        <version.junit-jupiter-api>5.10.2</version.junit-jupiter-api>
+        <version.assertj-core>3.26.3</version.assertj-core>
+
+        <!-- Maven Plugins -->
+        <version.maven-compiler-plugin>3.8.1</version.maven-compiler-plugin>
+        <version.maven-source-plugin>3.3.0</version.maven-source-plugin>
+        <version.maven-gpg-plugin>3.2.4</version.maven-gpg-plugin>
+        <version.spotless-maven-plugin>2.44.2</version.spotless-maven-plugin>
+        <version.pnc-ide-config>1.1.0</version.pnc-ide-config>
+        <version.central-publishing-maven-plugin>0.8.0</version.central-publishing-maven-plugin>
+        <version.transformer-maven-plugin>1.0.0</version.transformer-maven-plugin>
+
         <tagSuffix />
     </properties>
-    <dependencies>
-        <dependency>
-            <groupId>javax.ws.rs</groupId>
-            <artifactId>javax.ws.rs-api</artifactId>
-            <version>2.1.1</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.json.bind</groupId>
-            <artifactId>javax.json.bind-api</artifactId>
-            <version>1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <version>2.0.1.Final</version>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.36</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.17.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.microprofile.openapi</groupId>
-            <artifactId>microprofile-openapi-api</artifactId>
-            <version>2.0.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.10.2</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.10.2</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>3.26.3</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate.validator</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>6.2.5.Final</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+        <dependencies>
+            <dependency>
+                <groupId>javax.ws.rs</groupId>
+                <artifactId>javax.ws.rs-api</artifactId>
+                <version>${version.javax.ws.rs-api}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.json.bind</groupId>
+                <artifactId>javax.json.bind-api</artifactId>
+                <version>${version.javax.json.bind-api}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>${version.javax.validation-api}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${version.lombok}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${version.jackson-databind}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.eclipse.microprofile.openapi</groupId>
+                <artifactId>microprofile-openapi-api</artifactId>
+                <version>${version.microprofile-openapi-api}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-api</artifactId>
+                <version>${version.junit-jupiter-api}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-engine</artifactId>
+                <version>${version.junit-jupiter-api}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.assertj</groupId>
+                <artifactId>assertj-core</artifactId>
+                <version>${version.assertj-core}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate.validator</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${version.hibernate-validator}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
     <build>
         <plugins>
             <plugin>
                 <groupId>com.diffplug.spotless</groupId>
                 <artifactId>spotless-maven-plugin</artifactId>
-                <version>2.44.2</version>
+                <version>${version.spotless-maven-plugin}</version>
                 <dependencies>
                   <dependency>
                     <groupId>org.jboss.pnc</groupId>
                     <artifactId>ide-config</artifactId>
-                    <version>1.1.0</version>
+                    <version>${version.pnc-ide-config}</version>
                   </dependency>
                 </dependencies>
                 <configuration>
@@ -174,7 +199,7 @@
             <plugin>
                 <groupId>org.sonatype.central</groupId>
                 <artifactId>central-publishing-maven-plugin</artifactId>
-                <version>0.8.0</version>
+                <version>${version.central-publishing-maven-plugin}</version>
                 <extensions>true</extensions>
                 <configuration>
                     <!-- as defined in your settings.xml -->
@@ -184,7 +209,7 @@
             <plugin>
                 <groupId>org.eclipse.transformer</groupId>
                 <artifactId>transformer-maven-plugin</artifactId>
-                <version>1.0.0</version>
+                <version>${version.transformer-maven-plugin}</version>
                 <extensions>true</extensions>
                 <configuration>
                     <rules>
@@ -218,7 +243,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-source-plugin</artifactId>
-                        <version>3.3.0</version>
+                        <version>${version.maven-source-plugin}</version>
                         <executions>
                             <execution>
                                 <id>attach-sources</id>
@@ -231,7 +256,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
-                        <version>3.2.4</version>
+                        <version>${version.maven-gpg-plugin}</version>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>
