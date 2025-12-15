@@ -28,7 +28,7 @@ public class OperationOutcome {
     }
 
     public static OperationOutcome timeout() {
-        return OperationOutcome.process(OperationResult.FAILED, null);
+        return OperationOutcome.process(OperationResult.TIMEOUT, null);
     }
 
     public static OperationOutcome reject() {
