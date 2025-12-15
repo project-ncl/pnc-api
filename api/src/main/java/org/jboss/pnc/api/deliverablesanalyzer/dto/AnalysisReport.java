@@ -21,6 +21,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.jboss.pnc.api.dto.ExceptionResolution;
+import org.jboss.pnc.api.enums.ResultStatus;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -46,24 +47,26 @@ public class AnalysisReport implements Serializable {
     /** Results of the analysis (if analysis was successful) */
     private List<@Valid FinderResult> results;
 
-    /** Flag indicating if analysis was finished successfully */
-    private boolean success;
+    /** Enum indicating the resulting analysis status */
+    private ResultStatus resultStatus;
 
     /** Exception log if any caught exception occurs during the process */
     private ExceptionResolution exceptionResolution;
 
     public AnalysisReport(List<FinderResult> results) {
         this.results = results;
-        success = true;
+        resultStatus = ResultStatus.SUCCESS;
     }
 
     public AnalysisReport() {
-        success = false;
+        resultStatus = ResultStatus.FAILED;
     }
 
-    public static AnalysisReport failWithResolution(ExceptionResolution exceptionResolution) {
+    public static AnalysisReport processWithResolution(
+            ResultStatus resultStatus,
+            ExceptionResolution exceptionResolution) {
         return AnalysisReport.builder()
-                .success(false)
+                .resultStatus(resultStatus)
                 .exceptionResolution(exceptionResolution)
                 .build();
     }
