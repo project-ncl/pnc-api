@@ -31,7 +31,16 @@ public class OperationOutcome {
         return OperationOutcome.builder().result(OperationResult.FAILED).build();
     }
 
+    public static OperationOutcome systemError() {
+        return OperationOutcome.builder().result(OperationResult.SYSTEM_ERROR).build();
+    }
+
     public static OperationOutcome process(OperationResult operationResult, ExceptionResolution exceptionResolution) {
+        if (exceptionResolution == null) {
+            return OperationOutcome.builder()
+                    .result(operationResult)
+                    .build();
+        }
         return OperationOutcome.builder()
                 .result(operationResult)
                 .reason(exceptionResolution.getReason())
