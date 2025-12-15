@@ -27,12 +27,24 @@ public class OperationOutcome {
         return OperationOutcome.builder().result(OperationResult.SUCCESSFUL).build();
     }
 
-    public static OperationOutcome fail() {
-        return OperationOutcome.builder().result(OperationResult.FAILED).build();
+    public static OperationOutcome timeout() {
+        return OperationOutcome.process(OperationResult.FAILED, null);
     }
 
-    public static OperationOutcome systemError() {
-        return OperationOutcome.builder().result(OperationResult.SYSTEM_ERROR).build();
+    public static OperationOutcome reject() {
+        return OperationOutcome.process(OperationResult.REJECTED, null);
+    }
+
+    public static OperationOutcome cancel() {
+        return OperationOutcome.process(OperationResult.CANCELLED, null);
+    }
+
+    public static OperationOutcome fail(ExceptionResolution exceptionResolution) {
+        return OperationOutcome.process(OperationResult.FAILED, exceptionResolution);
+    }
+
+    public static OperationOutcome systemError(ExceptionResolution exceptionResolution) {
+        return OperationOutcome.process(OperationResult.SYSTEM_ERROR, exceptionResolution);
     }
 
     public static OperationOutcome process(OperationResult operationResult, ExceptionResolution exceptionResolution) {
