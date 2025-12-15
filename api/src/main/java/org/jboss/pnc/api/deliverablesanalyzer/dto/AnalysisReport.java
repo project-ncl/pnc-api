@@ -70,4 +70,8 @@ public class AnalysisReport implements Serializable {
                 .exceptionResolution(exceptionResolution)
                 .build();
     }
+
+    public boolean isSuccess() {
+        return this.getResultStatus().isSuccess();
+    }
 }
