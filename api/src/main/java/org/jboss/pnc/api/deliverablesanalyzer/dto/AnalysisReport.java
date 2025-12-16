@@ -65,6 +65,10 @@ public class AnalysisReport implements Serializable {
     public static AnalysisReport processWithResolution(
             ResultStatus resultStatus,
             ExceptionResolution exceptionResolution) {
+        if (resultStatus.equals(ResultStatus.SUCCESS)) {
+            throw new IllegalArgumentException(
+                    "Invalid status: " + resultStatus + ". Only failures are allowed to have resolution.");
+        }
         return AnalysisReport.builder()
                 .resultStatus(resultStatus)
                 .exceptionResolution(exceptionResolution)
