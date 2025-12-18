@@ -144,6 +144,11 @@
                 <version>${version.jackson-databind}</version>
             </dependency>
             <dependency>
+                <groupId>org.jboss.pnc</groupId>
+                <artifactId>dto</artifactId>
+                <version>${version.orch-dto}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.eclipse.microprofile.openapi</groupId>
                 <artifactId>microprofile-openapi-api</artifactId>
                 <version>${version.microprofile-openapi-api}</version>

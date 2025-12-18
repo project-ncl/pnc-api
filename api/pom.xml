@@ -48,6 +48,10 @@
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.jboss.pnc</groupId>
+            <artifactId>dto</artifactId>
+        </dependency>
 
 
         <!-- TEST DEPENDENCIES -->
