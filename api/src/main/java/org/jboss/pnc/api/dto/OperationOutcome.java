@@ -1,5 +1,7 @@
 package org.jboss.pnc.api.dto;
 
+import javax.validation.constraints.NotNull;
+
 import org.jboss.pnc.api.enums.OperationResult;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -15,6 +17,7 @@ import lombok.extern.jackson.Jacksonized;
 public class OperationOutcome {
 
     /** Flag indicating status of the operation */
+    @NotNull
     private OperationResult result;
 
     /** String representing exception if any */
@@ -48,6 +51,10 @@ public class OperationOutcome {
     }
 
     public static OperationOutcome process(OperationResult operationResult, ExceptionResolution exceptionResolution) {
+        if (operationResult == null) {
+            throw new IllegalArgumentException(
+                    "Invalid operationResult: null. Operation Result is required.");
+        }
         if (exceptionResolution == null) {
             return OperationOutcome.builder()
                     .result(operationResult)
