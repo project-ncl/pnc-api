@@ -26,17 +26,17 @@ import org.jboss.pnc.api.enums.orch.CompletionStatus;
 import org.jboss.pnc.dto.validation.groups.WhenCreatingNew;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import lombok.*;
+import lombok.extern.jackson.Jacksonized;
 
 /**
  * @author <a href="mailto:matejonnet@gmail.com">Matej Lazar</a>
  */
 @Getter
 @Setter
-@JsonDeserialize(builder = BuildResultRest.Builder.class)
 @Builder(builderClassName = "Builder")
+@Jacksonized
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
