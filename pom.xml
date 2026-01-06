@@ -98,7 +98,7 @@
         <version.maven-gpg-plugin>3.2.4</version.maven-gpg-plugin>
         <version.spotless-maven-plugin>2.44.2</version.spotless-maven-plugin>
         <version.pnc-ide-config>1.1.0</version.pnc-ide-config>
-        <version.central-publishing-maven-plugin>0.8.0</version.central-publishing-maven-plugin>
+        <version.central-publishing-maven-plugin>0.9.0</version.central-publishing-maven-plugin>
         <version.transformer-maven-plugin>1.0.0</version.transformer-maven-plugin>
 
         <tagSuffix />
