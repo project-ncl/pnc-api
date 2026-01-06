@@ -83,7 +83,7 @@
         <version.microprofile-openapi-api>2.0.1</version.microprofile-openapi-api>
 
         <!-- Regular dependencies -->
-        <version.lombok>1.18.36</version.lombok>
+        <version.lombok>1.18.42</version.lombok>
         <version.jackson-databind>2.17.1</version.jackson-databind>
         <version.orch-dto>3.3.2-SNAPSHOT</version.orch-dto>
 
