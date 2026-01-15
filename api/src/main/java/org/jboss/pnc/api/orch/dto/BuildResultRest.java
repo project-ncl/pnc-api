@@ -19,11 +19,17 @@
 package org.jboss.pnc.api.orch.dto;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.Map;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import org.jboss.pnc.api.enums.orch.CompletionStatus;
+import org.jboss.pnc.dto.Artifact;
 import org.jboss.pnc.dto.validation.groups.WhenCreatingNew;
+import org.jboss.pnc.dto.validation.groups.WhenImporting;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -56,6 +62,11 @@ public class BuildResultRest implements Serializable {
     private EnvironmentDriverResultRest environmentDriverResult;
 
     private RepourResultRest repourResult;
+
+    private List<@NotNull(groups = { WhenCreatingNew.class, WhenImporting.class }) Artifact> attachments;
+
+    private Map<@NotBlank(groups = { WhenCreatingNew.class, WhenImporting.class }) String, @NotNull(
+            groups = { WhenCreatingNew.class, WhenImporting.class }) String> extraAttributes;
 
     @Override
     public String toString() {
