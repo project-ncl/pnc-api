@@ -48,7 +48,7 @@ import lombok.extern.jackson.Jacksonized;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BuildResultRest implements Serializable {
 
-    @NotNull(groups = WhenCreatingNew.class)
+    @NotNull(groups = { WhenCreatingNew.class, WhenImporting.class })
     private CompletionStatus completionStatus;
 
     private ProcessException processException;
@@ -57,6 +57,7 @@ public class BuildResultRest implements Serializable {
 
     private BuildDriverResultRest buildDriverResult;
 
+    @Valid
     private RepositoryManagerResultRest repositoryManagerResult;
 
     private EnvironmentDriverResultRest environmentDriverResult;

@@ -21,6 +21,8 @@ package org.jboss.pnc.api.orch.dto;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.jboss.pnc.api.enums.orch.CompletionStatus;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -40,8 +42,8 @@ import lombok.extern.jackson.Jacksonized;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class RepositoryManagerResultRest implements Serializable {
 
-    private final List<org.jboss.pnc.dto.Artifact> builtArtifacts;
-    private final List<org.jboss.pnc.dto.Artifact> dependencies;
+    private final @Valid List<org.jboss.pnc.dto.Artifact> builtArtifacts;
+    private final @Valid List<org.jboss.pnc.dto.Artifact> dependencies;
     private final String buildContentId;
     private final CompletionStatus completionStatus;
 
