@@ -93,7 +93,7 @@
 
         <!-- Test dependencies -->
         <version.hibernate-validator>6.2.5.Final</version.hibernate-validator>
-        <version.junit-jupiter-api>5.10.2</version.junit-jupiter-api>
+        <version.junit-jupiter-api>6.0.2</version.junit-jupiter-api>
         <version.assertj-core>3.27.6</version.assertj-core>
 
         <!-- Maven Plugins -->
