@@ -2,6 +2,7 @@ package org.jboss.pnc.api.orch.dto;
 
 import java.util.List;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.jboss.pnc.dto.validation.groups.WhenImporting;
@@ -20,5 +21,7 @@ import lombok.extern.jackson.Jacksonized;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ImportBuildsRequest {
 
+    @Valid
+    @NotNull(groups = WhenImporting.class)
     private final List<@NotNull(groups = WhenImporting.class) BuildImport> imports;
 }

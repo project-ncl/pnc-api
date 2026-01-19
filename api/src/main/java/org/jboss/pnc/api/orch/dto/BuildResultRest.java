@@ -33,7 +33,11 @@ import org.jboss.pnc.dto.validation.groups.WhenImporting;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.extern.jackson.Jacksonized;
 
 /**
@@ -57,8 +61,7 @@ public class BuildResultRest implements Serializable {
 
     private BuildDriverResultRest buildDriverResult;
 
-    @Valid
-    private RepositoryManagerResultRest repositoryManagerResult;
+    private @Valid RepositoryManagerResultRest repositoryManagerResult;
 
     private EnvironmentDriverResultRest environmentDriverResult;
 
