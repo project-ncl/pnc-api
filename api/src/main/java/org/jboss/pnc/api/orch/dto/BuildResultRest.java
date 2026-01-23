@@ -23,7 +23,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import org.jboss.pnc.api.enums.orch.CompletionStatus;
@@ -59,18 +58,17 @@ public class BuildResultRest implements Serializable {
 
     private BuildExecutionConfigurationRest buildExecutionConfiguration;
 
+    private RepourResultRest repourResult;
+
+    private EnvironmentDriverResultRest environmentDriverResult;
+
     private BuildDriverResultRest buildDriverResult;
 
     private @Valid RepositoryManagerResultRest repositoryManagerResult;
 
-    private EnvironmentDriverResultRest environmentDriverResult;
+    private @Valid List<Artifact> attachments;
 
-    private RepourResultRest repourResult;
-
-    private List<@NotNull(groups = { WhenCreatingNew.class, WhenImporting.class }) Artifact> attachments;
-
-    private Map<@NotBlank(groups = { WhenCreatingNew.class, WhenImporting.class }) String, @NotNull(
-            groups = { WhenCreatingNew.class, WhenImporting.class }) String> extraAttributes;
+    private Map<String, String> extraAttributes;
 
     @Override
     public String toString() {
