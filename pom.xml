@@ -88,7 +88,7 @@
 
         <!-- Regular dependencies -->
         <version.lombok>1.18.42</version.lombok>
-        <version.jackson-databind>2.20.1</version.jackson-databind>
+        <version.jackson-databind>2.21.0</version.jackson-databind>
         <version.orch-dto>3.3.2-SNAPSHOT</version.orch-dto>
 
         <!-- Test dependencies -->
