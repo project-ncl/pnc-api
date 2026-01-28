@@ -29,7 +29,7 @@ import lombok.Getter;
 import lombok.extern.jackson.Jacksonized;
 
 @Getter
-@Builder(builderClassName = "Builder")
+@Builder(builderClassName = "Builder", toBuilder = true)
 @Jacksonized
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)

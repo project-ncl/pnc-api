@@ -36,7 +36,7 @@ import lombok.extern.jackson.Jacksonized;
  * @author <a href="mailto:matejonnet@gmail.com">Matej Lazar</a>
  */
 @Getter
-@Builder(builderClassName = "Builder")
+@Builder(builderClassName = "Builder", toBuilder = true)
 @Jacksonized
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)

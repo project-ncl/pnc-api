@@ -44,7 +44,7 @@ import lombok.extern.jackson.Jacksonized;
  */
 @Getter
 @Setter
-@Builder(builderClassName = "Builder")
+@Builder(builderClassName = "Builder", toBuilder = true)
 @Jacksonized
 @NoArgsConstructor
 @AllArgsConstructor

@@ -41,7 +41,7 @@ import lombok.extern.jackson.Jacksonized;
 @Data
 @ToString
 @AllArgsConstructor
-@Builder(builderClassName = "Builder", builderMethodName = "newBuilder")
+@Builder(builderClassName = "Builder", builderMethodName = "newBuilder", toBuilder = true)
 @Jacksonized
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BuildExecutionConfigurationRest implements Serializable {

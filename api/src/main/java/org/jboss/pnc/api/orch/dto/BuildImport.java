@@ -18,7 +18,7 @@ import lombok.extern.jackson.Jacksonized;
 
 @Getter
 @Jacksonized
-@Builder(builderClassName = "Builder")
+@Builder(builderClassName = "Builder", toBuilder = true)
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BuildImport {

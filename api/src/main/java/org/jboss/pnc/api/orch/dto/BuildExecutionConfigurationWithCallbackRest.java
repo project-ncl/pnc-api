@@ -104,7 +104,7 @@ public class BuildExecutionConfigurationWithCallbackRest extends BuildExecutionC
         this.completionCallbackUrl = completionCallbackUrl;
     }
 
-    @lombok.Builder(builderClassName = "Builder", toBuilder = true)
+    @lombok.Builder(builderClassName = "Builder")
     public BuildExecutionConfigurationWithCallbackRest(
             String id,
             String buildContentId,

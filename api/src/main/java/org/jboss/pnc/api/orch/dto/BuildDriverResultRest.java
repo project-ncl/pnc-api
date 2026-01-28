@@ -34,7 +34,7 @@ import lombok.extern.jackson.Jacksonized;
  */
 @Getter
 @AllArgsConstructor
-@Builder(builderClassName = "Builder")
+@Builder(builderClassName = "Builder", toBuilder = true)
 @Jacksonized
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BuildDriverResultRest implements Serializable {
