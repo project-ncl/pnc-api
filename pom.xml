@@ -33,6 +33,8 @@
     <version>3.4.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>pnc-api-parent</name>
+    <description>Parent for pnc api</description>
+    <url>https://github.com/project-ncl/pnc-api</url>
 
     <licenses>
         <license>
@@ -279,6 +281,22 @@
                                 <goals>
                                     <goal>jar-no-fork</goal>
                                 </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>3.11.2</version>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                                <configuration>
+                                    <failOnWarnings>false</failOnWarnings>
+                                </configuration>
                             </execution>
                         </executions>
                     </plugin>
