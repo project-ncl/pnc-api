@@ -23,12 +23,12 @@ package org.jboss.pnc.api.enums;
 public enum RebuildMode {
 
     /**
-     * Check automatically captured dependencies on {@link org.jboss.pnc.model.BuildRecord}.
+     * Check automatically captured dependencies on {org.jboss.pnc.model.BuildRecord}.
      */
     IMPLICIT_DEPENDENCY_CHECK,
 
     /**
-     * Check the user defined dependencies on {@link org.jboss.pnc.model.BuildConfiguration}.
+     * Check the user defined dependencies on {org.jboss.pnc.model.BuildConfiguration}.
      */
     EXPLICIT_DEPENDENCY_CHECK,
 
