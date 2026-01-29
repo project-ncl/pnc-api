@@ -10,6 +10,7 @@
     </parent>
 
     <artifactId>pnc-api</artifactId>
+    <name>pnc-api</name>
 
     <dependencies>
         <!-- Project dependencies -->
