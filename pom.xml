@@ -100,7 +100,7 @@
         <version.maven-compiler-plugin>3.8.1</version.maven-compiler-plugin>
         <version.maven-source-plugin>3.4.0</version.maven-source-plugin>
         <version.maven-gpg-plugin>3.2.8</version.maven-gpg-plugin>
-        <version.spotless-maven-plugin>3.2.0</version.spotless-maven-plugin>
+        <version.spotless-maven-plugin>3.2.1</version.spotless-maven-plugin>
         <version.pnc-ide-config>1.1.0</version.pnc-ide-config>
         <version.central-publishing-maven-plugin>0.10.0</version.central-publishing-maven-plugin>
         <version.transformer-maven-plugin>1.0.0</version.transformer-maven-plugin>
