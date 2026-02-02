@@ -1,11 +1,6 @@
 package org.jboss.pnc.api.orch.dto;
 
-import java.util.Date;
-
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
-import javax.validation.constraints.PastOrPresent;
 
 import org.jboss.pnc.dto.validation.groups.WhenImporting;
 
@@ -24,16 +19,8 @@ import lombok.extern.jackson.Jacksonized;
 public class BuildImport {
 
     @NotNull(groups = WhenImporting.class)
-    private final @Valid BuildMeta metadata;
+    private final BuildMeta metadata;
 
     @NotNull(groups = WhenImporting.class)
-    private final @Valid BuildResultRest result;
-
-    @NotNull(groups = WhenImporting.class)
-    @Past(groups = WhenImporting.class)
-    private final Date startTime;
-
-    @NotNull(groups = WhenImporting.class)
-    @PastOrPresent(groups = WhenImporting.class)
-    private final Date endTime;
+    private final BuildResultRest result;
 }

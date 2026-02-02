@@ -6,7 +6,6 @@ import java.util.List;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
-import javax.validation.constraints.Past;
 
 import org.jboss.pnc.api.enums.AlignmentPreference;
 import org.jboss.pnc.dto.validation.groups.WhenCreatingNew;
@@ -21,7 +20,7 @@ import lombok.extern.jackson.Jacksonized;
 
 @Getter
 @Jacksonized
-@Builder(builderClassName = "Builder", toBuilder = true)
+@Builder(builderClassName = "Builder")
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BuildMeta {
@@ -40,7 +39,6 @@ public class BuildMeta {
     AlignmentPreference alignmentPreference;
 
     @NotNull(groups = { WhenCreatingNew.class, WhenImporting.class })
-    @Past(groups = { WhenCreatingNew.class, WhenImporting.class })
     Date submitTime;
 
     @NotBlank(groups = { WhenCreatingNew.class, WhenImporting.class })
