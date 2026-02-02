@@ -153,6 +153,12 @@
                 <groupId>org.jboss.pnc</groupId>
                 <artifactId>dto</artifactId>
                 <version>${version.orch-dto}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.jboss.pnc</groupId>
+                        <artifactId>pnc-api</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.microprofile.openapi</groupId>
