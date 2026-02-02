@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.validation.constraints.Min;
+import javax.validation.constraints.Positive;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
@@ -54,11 +55,12 @@ public interface Bifrost {
             @QueryParam("direction") Direction direction,
             @QueryParam("format") @DefaultValue("DEFAULT") Format format,
             @QueryParam("maxLines") Integer maxLines,
-            @QueryParam("batchSize") @Min(1) Integer batchSize,
+            @QueryParam("tailLines") @Positive Integer tailLines,
+            @QueryParam("batchSize") @Positive Integer batchSize,
             @QueryParam("batchDelay") @Min(200) Integer batchDelay,
             @QueryParam("follow") boolean follow,
             @QueryParam("timeoutProbeString") String timeoutProbeString); // if string is defined the server is sending
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    // given string as a connection probe. The
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            // given string as a connection probe. The
 
     @GET
     @Path("/")
@@ -69,7 +71,7 @@ public interface Bifrost {
             @QueryParam("afterLine") Line afterLine,
             @QueryParam("direction") @DefaultValue("ASC") Direction direction,
             @QueryParam("maxLines") Integer maxLines,
-            @QueryParam("batchSize") @Min(1) Integer batchSize) throws IOException;
+            @QueryParam("batchSize") @Positive Integer batchSize) throws IOException;
 
     @GET
     @Path("/metadata")
@@ -80,7 +82,7 @@ public interface Bifrost {
             @QueryParam("afterLine") Line afterLine,
             @QueryParam("direction") @DefaultValue("ASC") Direction direction,
             @QueryParam("maxLines") Integer maxLines,
-            @QueryParam("batchSize") @Min(1) Integer batchSize) throws IOException;
+            @QueryParam("batchSize") @Positive Integer batchSize) throws IOException;
 
     @GET
     @Path("/version")
