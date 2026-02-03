@@ -30,7 +30,7 @@
 
     <groupId>org.jboss.pnc</groupId>
     <artifactId>pnc-api-parent</artifactId>
-    <version>3.4.1-SNAPSHOT</version>
+    <version>3.4.2-SHAPSHOT</version>
     <packaging>pom</packaging>
     <name>pnc-api-parent</name>
 
