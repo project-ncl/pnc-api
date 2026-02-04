@@ -28,7 +28,7 @@ public class ProvenanceKeys {
     // SCM
     public static final String PROVENANCE_V1_SCM_REPOSITORY = "repository";
     public static final String PROVENANCE_V1_SCM_DOWNSTREAM_REPOSITORY = "repository.downstream";
-    public static final String PROVENANCE_V1_SCM_COMMIT = "commit";
+    public static final String PROVENANCE_V1_SCM_COMMIT = "gitCommit";
     public static final String PROVENANCE_V1_SCM_TAG = "tag";
     public static final String PROVENANCE_V1_REVISION = "revision";
     public static final String PROVENANCE_V1_PRE_BUILD_SYNC = "preBuildSync";
