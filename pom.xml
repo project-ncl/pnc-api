@@ -89,7 +89,7 @@
         <!-- Regular dependencies -->
         <version.lombok>1.18.42</version.lombok>
         <version.jackson-databind>2.21.0</version.jackson-databind>
-        <version.orch-dto>3.3.2-SNAPSHOT</version.orch-dto>
+        <version.orch-dto>3.4.1</version.orch-dto>
 
         <!-- Test dependencies -->
         <version.hibernate-validator>6.2.5.Final</version.hibernate-validator>
