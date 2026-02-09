@@ -30,7 +30,7 @@
 
     <groupId>org.jboss.pnc</groupId>
     <artifactId>pnc-api-parent</artifactId>
-    <version>3.4.2</version>
+    <version>3.4.3-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>pnc-api-parent</name>
     <description>Parent for pnc api</description>
@@ -48,7 +48,7 @@
         <connection>scm:git:git@github.com:project-ncl/pnc-api.git</connection>
         <url>scm:git:git@github.com:project-ncl/pnc-api.git</url>
         <developerConnection>scm:git:git@github.com:project-ncl/pnc-api.git</developerConnection>
-        <tag>3.4.2</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <developers>
