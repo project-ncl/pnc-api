@@ -7,6 +7,21 @@ import org.junit.jupiter.api.Test;
 public class PatternsTest {
 
     @Test
+    void nonScpLike_withoutGitSuffixWithTrailingSlash_isValid() {
+        String externalUrl = "https://github.com/repo/";
+
+        GitRepositoryURLValidator.ParsedURL url = GitRepositoryURLValidator.parseURL(externalUrl);
+
+        assertThat(url).isNotNull();
+        assertThat(url.getProtocol()).isEqualTo("https");
+        assertThat(url.getUser()).isNull();
+        assertThat(url.getHost()).isEqualTo("github.com");
+        assertThat(url.getPort()).isEqualTo(-1);
+        assertThat(url.getOrganization()).isNull();
+        assertThat(url.getRepository()).isEqualTo("repo");
+    }
+
+    @Test
     void nonScpLike_withoutGitSuffix_isValid() {
         String externalUrl = "https://github.com/repo";
 
@@ -311,6 +326,17 @@ public class PatternsTest {
         assertThat(url).isNotNull();
         assertThat(url.getProtocol()).isEqualTo("file");
         assertThat(url.getRepository()).isEqualTo("/tmp/foo/bar");
+    }
+
+    @Test
+    void fileLike_validRelativeWithoutTrailing_isValid() {
+        String externalUrl = "file://../tmp/foo";
+
+        GitRepositoryURLValidator.ParsedURL url = GitRepositoryURLValidator.parseURL(externalUrl);
+
+        assertThat(url).isNotNull();
+        assertThat(url.getProtocol()).isEqualTo("file");
+        assertThat(url.getRepository()).isEqualTo("../tmp/foo");
     }
 
     @Test
