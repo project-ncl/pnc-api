@@ -78,10 +78,25 @@ public class GitRepositoryURLValidator implements ConstraintValidator<GitReposit
      *         null is returned.
      */
     public static ParsedURL parseURL(String url) {
+        if (url == null) {
+            return null;
+        }
+        // [NCLSUP-1366] Strip trailing '/' from URLs
+        if (url.endsWith("/")) {
+            url = url.substring(0, url.length() - 1);
+        }
+
         final ParsedURL.Builder builder = new ParsedURL.Builder();
+        final Matcher fileMatcher = Patterns.FileLike.PATTERN.matcher(url);
         final Matcher nonScpLikeMatcher = Patterns.NonScpLike.PATTERN.matcher(url);
         final Matcher scpLikeMatcher = Patterns.ScpLike.PATTERN.matcher(url);
-        final Matcher fileMatcher = Patterns.FileLike.PATTERN.matcher(url);
+
+        if (fileMatcher.matches()) {
+            ParsedURL build = builder.protocol(fileMatcher.group(Patterns.FileLike.PROTOCOL_GROUP))
+                    .repository(fileMatcher.group(Patterns.FileLike.REPOSITORY_GROUP))
+                    .build();
+            return build;
+        }
 
         if (nonScpLikeMatcher.matches()) {
             return builder.protocol(nonScpLikeMatcher.group(Patterns.NonScpLike.PROTOCOL_GROUP))
@@ -100,12 +115,6 @@ public class GitRepositoryURLValidator implements ConstraintValidator<GitReposit
                     .port(computePort(scpLikeMatcher.group(Patterns.ScpLike.PORT_GROUP)))
                     .organization(scpLikeMatcher.group(Patterns.ScpLike.ORGANIZATION_GROUP))
                     .repository(scpLikeMatcher.group(Patterns.ScpLike.REPOSITORY_GROUP))
-                    .build();
-        }
-
-        if (fileMatcher.matches()) {
-            return builder.protocol(fileMatcher.group(Patterns.FileLike.PROTOCOL_GROUP))
-                    .repository(fileMatcher.group(Patterns.FileLike.REPOSITORY_GROUP))
                     .build();
         }
 
