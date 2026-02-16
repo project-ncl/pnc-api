@@ -15,25 +15,25 @@ import lombok.ToString;
 @Getter
 @Builder
 @ToString
-public class QualifiedVersion {
+public class Version {
 
     private final String version;
 
     @Singular
     private final Map<Qualifier, Set<String>> qualifiers;
 
-    public QualifiedVersion(String version, Map<Qualifier, Set<String>> qualifiers) {
+    public Version(String version, Map<Qualifier, Set<String>> qualifiers) {
         this.version = version;
         this.qualifiers = qualifiers;
     }
 
-    public QualifiedVersion(String version) {
+    public Version(String version) {
         this.version = version;
         this.qualifiers = new HashMap<>();
     }
 
-    public static QualifiedVersion of(String version) {
-        return new QualifiedVersion(version);
+    public static Version of(String version) {
+        return new Version(version);
     }
 
     public boolean has(Qualifier qualifier, String[] values) {
