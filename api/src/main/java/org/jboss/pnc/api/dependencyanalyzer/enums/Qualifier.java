@@ -92,7 +92,7 @@ public enum Qualifier {
             return ValidationResult.withError(format("Input has {0} parts instead of {1}", values.length, parts));
 
         if (Arrays.stream(values).anyMatch(val -> val == null || val.isEmpty()))
-            return ValidationResult.withError(format("Input has null/empty parts."));
+            return ValidationResult.withError(format("Input has null/empty parts", values.length, parts));
 
         return ValidationResult.valid();
     }
