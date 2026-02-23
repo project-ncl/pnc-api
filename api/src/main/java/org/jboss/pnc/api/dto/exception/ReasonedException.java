@@ -20,9 +20,12 @@ import java.util.UUID;
 import org.jboss.pnc.api.dto.ExceptionResolution;
 import org.jboss.pnc.api.enums.ResultStatus;
 
+import lombok.Getter;
+
 /**
  * Exception used when collecting reason and proposal for UI
  */
+@Getter
 public class ReasonedException extends RuntimeException {
 
     private final String errorId;
@@ -56,22 +59,9 @@ public class ReasonedException extends RuntimeException {
                 .build();
     }
 
-    public String getErrorId() {
-        return errorId;
-    }
-
-    public ResultStatus getResult() {
-        return result;
-    }
-
-    public ExceptionResolution getExceptionResolution() {
-        return exceptionResolution;
-    }
-
     private String getDefaultProposal() {
         return String.format(
-                "There is an internal system error, please contact PNC team "
-                        + "at #forum-pnc-users (with the following ID: %s)",
+                "There is an internal system error (ID: %s), please contact PNC team at #forum-pnc-users",
                 this.errorId);
     }
 }
