@@ -20,6 +20,7 @@ package org.jboss.pnc.api.reqour.dto;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import org.jboss.pnc.api.dto.ExceptionResolution;
 import org.jboss.pnc.api.enums.ResultStatus;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -42,6 +43,11 @@ public class ReqourCallback {
      */
     @NotNull
     ResultStatus status;
+
+    /**
+     * Exception log if any caught exception occurs during the process
+     */
+    ExceptionResolution exceptionResolution;
 
     /**
      * Task ID
