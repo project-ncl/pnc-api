@@ -13,6 +13,14 @@ import lombok.Value;
 import lombok.experimental.SuperBuilder;
 import lombok.extern.jackson.Jacksonized;
 
+/**
+ * A detailed record of a tracked artifact as stored within a {@link TrackingReport}.
+ * <p>
+ * This class combines basic artifact metadata with specific environmental details
+ * like timestamps and local storage URLs. It implements {@link Comparable} to provide
+ * a consistent ordering in report listings (by repository, channel, path).
+ * </p>
+ */
 @Value
 @SuperBuilder(toBuilder = true)
 @Jacksonized
@@ -20,12 +28,24 @@ import lombok.extern.jackson.Jacksonized;
 @EqualsAndHashCode(callSuper = true, onlyExplicitlyIncluded = true)
 public class TrackedEntry extends TrackedArtifact implements Comparable<TrackedEntry> {
 
+    /**
+     * The original remote URL of the artifact. Empty in case the artifact was
+     */
     private String originUrl;
 
+    /**
+     * The access channel used for this entry.
+     */
     private AccessChannel accessChannel;
 
+    /**
+     * The internal/local URL where the artifact is available within the system.
+     */
     private String localUrl;
 
+    /**
+     * A set of Unix timestamps representing when this artifact was accessed or recorded.
+     */
     private Set<Long> timestamps;
 
     @Override

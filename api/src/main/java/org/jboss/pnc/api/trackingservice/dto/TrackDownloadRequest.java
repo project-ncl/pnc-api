@@ -9,14 +9,29 @@ import lombok.Value;
 import lombok.experimental.SuperBuilder;
 import lombok.extern.jackson.Jacksonized;
 
+/**
+ * Request object for tracking a dependency (downloaded artifact) consumed by the build.
+ * <p>
+ * Includes additional metadata about the origin of the dependency and the channel through which it was accessed. For
+ * artifacts coming from hosted repositories in PNC the origin is expected to be empty.
+ * </p>
+ */
 @Value
 @SuperBuilder(toBuilder = true)
 @Jacksonized
 @EqualsAndHashCode(callSuper = true, onlyExplicitlyIncluded = true)
 public class TrackDownloadRequest extends TrackedArtifact {
+
+    /**
+     * The access channel used to access this dependency (PROXY or NATIVE).
+     */
     @EqualsAndHashCode.Include
     private AccessChannel accessChannel;
 
+    /**
+     * The original remote URL from which the artifact was retrieved. For artifacts coming from hosted repositories in
+     * PNC the origin is expected to be empty.
+     */
     @EqualsAndHashCode.Include
     private String originUrl;
 }

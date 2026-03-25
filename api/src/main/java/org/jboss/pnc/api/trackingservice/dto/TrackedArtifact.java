@@ -15,6 +15,13 @@ import lombok.ToString;
 import lombok.experimental.NonFinal;
 import lombok.experimental.SuperBuilder;
 
+/**
+ * Base class for artifact metadata within the tracking system.
+ * <p>
+ * Contains common attributes for any file involved in a build process, such as storage location (repository ID and
+ * path), checksums for integrity verification, and file size.
+ * </p>
+ */
 @Getter
 @ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -23,6 +30,9 @@ import lombok.experimental.SuperBuilder;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class TrackedArtifact {
 
+    /**
+     * The identifier of the repository where the artifact is located.
+     */
     @EqualsAndHashCode.Include
     private final RepositoryId repoId;
 
@@ -37,6 +47,14 @@ public abstract class TrackedArtifact {
 
     private final Long size;
 
+    /**
+     * Returns the normalized path of the artifact.
+     * <p>
+     * Ensures the path always starts with a leading forward slash.
+     * </p>
+     *
+     * @return The normalized absolute path.
+     */
     @EqualsAndHashCode.Include
     @JsonProperty("path")
     public String getPath() {

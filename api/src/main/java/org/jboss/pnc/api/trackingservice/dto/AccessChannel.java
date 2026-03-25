@@ -5,14 +5,14 @@
 package org.jboss.pnc.api.trackingservice.dto;
 
 /**
- * Enumeration to distinguish between different access channels to stores.
+ * Enumeration to distinguish between different access channels to repositories. It can be either native or via proxy.
  */
 public enum AccessChannel {
 
-    /** Used when the store is accessed via generic http(s) proxy. */
-    PROXY,
-
     /** Used to signify content coming from normal repositories and groups. */
-    NATIVE;
+    NATIVE,
+
+    /** Used when the store is accessed via generic http(s) proxy. */
+    PROXY;
 
 }
