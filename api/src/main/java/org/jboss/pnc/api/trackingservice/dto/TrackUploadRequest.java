@@ -9,6 +9,9 @@ import lombok.Value;
 import lombok.experimental.SuperBuilder;
 import lombok.extern.jackson.Jacksonized;
 
+/**
+ * Request object for tracking an artifact produced (uploaded) during the build.
+ */
 @Value
 @SuperBuilder(toBuilder = true)
 @Jacksonized
