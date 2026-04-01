@@ -36,6 +36,11 @@ public abstract class TrackedArtifact {
     @EqualsAndHashCode.Include
     private final RepositoryId repoId;
 
+    /**
+     * The package type of this artifact.
+     */
+    private final PackageType packageType;
+
     private final String path;
 
     @EqualsAndHashCode.Include
