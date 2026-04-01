@@ -29,14 +29,10 @@ import lombok.extern.jackson.Jacksonized;
 public class TrackedEntry extends TrackedArtifact implements Comparable<TrackedEntry> {
 
     /**
-     * The original remote URL of the artifact. Empty in case the artifact was
+     * The original remote URL of the artifact. It is {@code null} in case the artifact was downloaded from a local
+     * repository or in case of an upload.
      */
     private String originUrl;
-
-    /**
-     * The access channel used for this entry.
-     */
-    private AccessChannel accessChannel;
 
     /**
      * The internal/local URL where the artifact is available within the system.
@@ -51,9 +47,6 @@ public class TrackedEntry extends TrackedArtifact implements Comparable<TrackedE
     @Override
     public int compareTo(final TrackedEntry other) {
         int comp = getRepoId().compareTo(other.getRepoId());
-        if (comp == 0) {
-            comp = getAccessChannel().compareTo(other.getAccessChannel());
-        }
         if (comp == 0) {
             comp = getPath().compareTo(other.getPath());
         }

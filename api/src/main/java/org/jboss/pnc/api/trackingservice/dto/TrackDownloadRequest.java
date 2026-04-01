@@ -23,12 +23,6 @@ import lombok.extern.jackson.Jacksonized;
 public class TrackDownloadRequest extends TrackedArtifact {
 
     /**
-     * The access channel used to access this dependency (PROXY or NATIVE).
-     */
-    @EqualsAndHashCode.Include
-    private AccessChannel accessChannel;
-
-    /**
      * The original remote URL from which the artifact was retrieved. For artifacts coming from hosted repositories in
      * PNC the origin is expected to be empty.
      */
