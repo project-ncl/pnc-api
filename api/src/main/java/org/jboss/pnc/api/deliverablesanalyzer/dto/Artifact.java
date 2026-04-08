@@ -48,7 +48,9 @@ import lombok.extern.jackson.Jacksonized;
         defaultImpl = Artifact.class)
 @JsonSubTypes({
         @JsonSubTypes.Type(value = MavenArtifact.class, name = "MAVEN"),
-        @JsonSubTypes.Type(value = NPMArtifact.class, name = "NPM") })
+        @JsonSubTypes.Type(value = NPMArtifact.class, name = "NPM"),
+        @JsonSubTypes.Type(value = WindowsArtifact.class, name = "WINDOWS"),
+        @JsonSubTypes.Type(value = RpmArtifact.class, name = "RPM") })
 public class Artifact {
 
     private final BuildSystemType buildSystemType;
