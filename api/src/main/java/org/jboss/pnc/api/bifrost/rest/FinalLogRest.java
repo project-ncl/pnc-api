@@ -27,6 +27,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.jboss.pnc.api.bifrost.dto.Checksums;
+
 @Path("/final-log")
 public interface FinalLogRest {
 
@@ -44,5 +46,10 @@ public interface FinalLogRest {
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes
     @Path("/{buildId}/{tag}/size")
-    public long getFinalLogSize(@PathParam("buildId") String buildId, @PathParam("tag") String tag);
+    long getFinalLogSize(@PathParam("buildId") String buildId, @PathParam("tag") String tag);
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{buildId}/{tag}/checksums")
+    Checksums getFinalLogChecksums(@PathParam("buildId") String buildId, @PathParam("tag") String tag);
 }
