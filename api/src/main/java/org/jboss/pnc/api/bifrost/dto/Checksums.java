@@ -3,12 +3,16 @@ package org.jboss.pnc.api.bifrost.dto;
 import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
+import lombok.extern.jackson.Jacksonized;
 
 @Getter
 @AllArgsConstructor
 @ToString
+@Builder
+@Jacksonized
 public class Checksums {
     @NotNull
     private final String md5;
