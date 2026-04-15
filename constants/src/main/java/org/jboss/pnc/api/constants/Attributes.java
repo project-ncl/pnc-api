@@ -55,4 +55,17 @@ public class Attributes {
      */
     public static final String DEPRECATION_REPLACEMENT = "DEPRECATION_REPLACEMENT";
 
+    /**
+     * Attribute key for org.jboss.pnc.dto.Environment that specifies the immutable digest of the build environment
+     * image. Combined with Environment.systemImageRepositoryUrl, it forms the fully qualified immutable image
+     * reference.
+     */
+    public static final String IMAGE_DIGEST_REF = "IMAGE_DIGEST_REF";
+
+    /**
+     * Attribute key for org.jboss.pnc.dto.Environment that identifies the URL of the build environment image's SBOM
+     * (Software Bill of Materials) manifest.
+     */
+    public static final String IMAGE_MANIFEST_URL = "IMAGE_MANIFEST_URL";
+
 }

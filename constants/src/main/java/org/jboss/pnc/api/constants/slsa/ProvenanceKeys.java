@@ -37,7 +37,13 @@ public class ProvenanceKeys {
     public static final String PROVENANCE_V1_ARTIFACT_IDENTIFIER = "identifier";
     public static final String PROVENANCE_V1_ARTIFACT_PURL = "purl";
     public static final String PROVENANCE_V1_ARTIFACT_URI = "uri";
+    public static final String PROVENANCE_V1_ARTIFACT_BUILD_ID = "buildId";
+    public static final String PROVENANCE_V1_ARTIFACT_ARTIFACT_ID = "artifactId";
+
+    // Need to match https://github.com/in-toto/attestation/blob/main/spec/v1/digest_set.md#supported-algorithms
     public static final String PROVENANCE_V1_ARTIFACT_SHA256 = "sha256";
+    public static final String PROVENANCE_V1_ARTIFACT_SHA1 = "sha1";
+    public static final String PROVENANCE_V1_ARTIFACT_MD5 = "md5";
 
     // Build details keys
     public static final String PROVENANCE_V1_BUILD_DETAILS_TYPE = "type";
@@ -51,5 +57,9 @@ public class ProvenanceKeys {
     // Byproducts
     public static final String PROVENANCE_V1_BY_PRODUCTS_BUILD_LOG = "buildLog";
     public static final String PROVENANCE_V1_BY_PRODUCTS_ALIGNMENT_LOG = "alignmentLog";
+
+    // Environments
+    public static final String PROVENANCE_V1_ENVIRONMENT_SHA256 = "sha256";
+    public static final String PROVENANCE_V1_ENVIRONMENT_TAG = "tag";
 
 }
