@@ -13,7 +13,7 @@ jobs:
     call-release-job:
       permissions:
         contents: write # needed to push commit and tag back to the repository
-      uses: project-ncl/shared-github-actions/.github/workflows/maven-release.yml@1680c5b67cccf2a1cc2ea81c7868a92a76b9c3b5 # main
+      uses: project-ncl/shared-github-actions/.github/workflows/maven-release.yml@21150ba868d8999b267c786123bf7a2410a05fc5 # main
       with:
         ref_to_release: ${{ inputs.ref_to_release }}
       secrets:
