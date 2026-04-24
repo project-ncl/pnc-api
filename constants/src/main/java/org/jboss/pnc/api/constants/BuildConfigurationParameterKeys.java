@@ -17,6 +17,12 @@
  */
 package org.jboss.pnc.api.constants;
 
+import java.util.EnumSet;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.jboss.pnc.api.enums.BuildCategory;
+
 /**
  * Keys for build configuration parameters.
  *
@@ -33,7 +39,8 @@ public enum BuildConfigurationParameterKeys {
                     + "'<groupid>:<artifactid>'."),
     BUILD_CATEGORY(
             "Specify the category of the build. It can be either SERVICE for managed service builds or STANDARD "
-                    + "(default if not present) for on-premise builds. Empty value is not allowed."),
+                    + "(default if not present) for on-premise builds. Empty value is not allowed.",
+            EnumSet.allOf(BuildCategory.class).stream().map(Enum::name).collect(Collectors.toUnmodifiableList())),
     EXTRA_REPOSITORIES(
             "Allows to specify any public repositories, which will be used to proxy build dependencies. Format is a "
                     + "single URL per line."),
@@ -47,8 +54,16 @@ public enum BuildConfigurationParameterKeys {
     /** The description to be shown to a user. */
     private String desc;
 
+    /** Optionally, list of possible values for a parameter key. */
+    private List<String> values;
+
     private BuildConfigurationParameterKeys(String desc) {
+        this(desc, null);
+    }
+
+    private BuildConfigurationParameterKeys(String desc, List<String> values) {
         this.desc = desc;
+        this.values = values;
     }
 
     /**
@@ -58,5 +73,15 @@ public enum BuildConfigurationParameterKeys {
      */
     public String getDesc() {
         return desc;
+    }
+
+    /**
+     * Gets the possible values for a parameter key.<br/>
+     * In case the possible values are not restricted in any way, {@code null} is returned.
+     *
+     * @return possible values
+     */
+    public List<String> getValues() {
+        return values;
     }
 }
