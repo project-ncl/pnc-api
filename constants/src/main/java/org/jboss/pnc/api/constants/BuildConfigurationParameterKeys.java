@@ -38,8 +38,7 @@ public enum BuildConfigurationParameterKeys {
                     + "can be useful for builds that disable PME. For Maven builds the format should be "
                     + "'<groupid>:<artifactid>'."),
     BUILD_CATEGORY(
-            "Specify the category of the build. It can be either SERVICE for managed service builds or STANDARD "
-                    + "(default if not present) for on-premise builds. Empty value is not allowed.",
+            "Specify the category of the build. It can be either STANDARD (default if not present) for on-premise builds of IBM products (IBM suffixing), LEGACY_REDHAT for on-premise builds of Red Hat products (Red Hat suffixing), or SERVICE for managed service builds.",
             EnumSet.allOf(BuildCategory.class).stream().map(Enum::name).collect(Collectors.toUnmodifiableList())),
     EXTRA_REPOSITORIES(
             "Allows to specify any public repositories, which will be used to proxy build dependencies. Format is a "
