@@ -17,6 +17,7 @@
  */
 package org.jboss.pnc.api.constants;
 
+import java.util.Collections;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -39,8 +40,9 @@ public enum BuildConfigurationParameterKeys {
                     + "'<groupid>:<artifactid>'."),
     BUILD_CATEGORY(
             "Specify the category of the build. It can be either SERVICE for managed service builds or STANDARD "
-                    + "(default if not present) for on-premise builds. Empty value is not allowed.",
-            EnumSet.allOf(BuildCategory.class).stream().map(Enum::name).collect(Collectors.toUnmodifiableList())),
+            + "(default if not present) for on-premise builds. Empty value is not allowed.",
+            Collections.unmodifiableList(
+                    EnumSet.allOf(BuildCategory.class).stream().map(Enum::name).collect(Collectors.toList()))),
     EXTRA_REPOSITORIES(
             "Allows to specify any public repositories, which will be used to proxy build dependencies. Format is a "
                     + "single URL per line."),

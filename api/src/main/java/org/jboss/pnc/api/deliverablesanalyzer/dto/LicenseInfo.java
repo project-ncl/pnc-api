@@ -44,7 +44,7 @@ public class LicenseInfo implements Serializable {
 
     private String spdxLicenseId;
 
-    @Deprecated(since = "3.0.7", forRemoval = true)
+    @Deprecated(/* since = "3.0.7", forRemoval = true */)
     private LicenseSource source;
 
     private String sourceUrl;

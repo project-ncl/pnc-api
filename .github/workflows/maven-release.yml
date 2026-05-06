@@ -13,8 +13,9 @@ jobs:
     call-release-job:
       permissions:
         contents: write # needed to push commit and tag back to the repository
-      uses: project-ncl/shared-github-actions/.github/workflows/maven-release.yml@cac5f28c415563ea719d353dd7e04d8904ee696e # main
+      uses: project-ncl/shared-github-actions/.github/workflows/maven-release.yml@153b97777335953545bc8a907eb5f062af66b7f2 # v0.0.18
       with:
+        java_version: 17
         ref_to_release: ${{ inputs.ref_to_release }}
       secrets:
         SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
