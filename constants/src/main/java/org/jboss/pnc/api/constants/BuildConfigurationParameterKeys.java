@@ -40,7 +40,7 @@ public enum BuildConfigurationParameterKeys {
                     + "'<groupid>:<artifactid>'."),
     BUILD_CATEGORY(
             "Specify the category of the build. It can be either SERVICE for managed service builds or STANDARD "
-            + "(default if not present) for on-premise builds. Empty value is not allowed.",
+                    + "(default if not present) for on-premise builds. Empty value is not allowed.",
             Collections.unmodifiableList(
                     EnumSet.allOf(BuildCategory.class).stream().map(Enum::name).collect(Collectors.toList()))),
     EXTRA_REPOSITORIES(
