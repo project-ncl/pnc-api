@@ -10,5 +10,6 @@
   </parent>
 
   <artifactId>pnc-api-constants</artifactId>
+  <name>pnc-api-constants</name>
 
 </project>
