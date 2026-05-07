@@ -95,12 +95,8 @@
         <version.assertj-core>3.27.7</version.assertj-core>
 
         <!-- Maven Plugins -->
-        <version.maven-compiler-plugin>3.8.1</version.maven-compiler-plugin>
-        <version.maven-source-plugin>3.4.0</version.maven-source-plugin>
-        <version.maven-gpg-plugin>3.2.8</version.maven-gpg-plugin>
         <version.spotless-maven-plugin>3.4.0</version.spotless-maven-plugin>
         <version.pnc-ide-config>1.1.0</version.pnc-ide-config>
-        <version.central-publishing-maven-plugin>0.10.0</version.central-publishing-maven-plugin>
         <version.transformer-maven-plugin>1.0.0</version.transformer-maven-plugin>
 
         <!-- Override enforcer requirements -->
@@ -212,17 +208,6 @@
                         <phase>compile</phase>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-                <configuration>
-                    <tagNameFormat>@{project.version}${tagSuffix}</tagNameFormat>
-                    <autoVersionSubmodules>true</autoVersionSubmodules>
-                    <useReleaseProfile>false</useReleaseProfile>
-                    <releaseProfiles>release</releaseProfiles>
-                    <goals>deploy</goals>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.eclipse.transformer</groupId>
