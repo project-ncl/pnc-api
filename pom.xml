@@ -95,7 +95,7 @@
         <version.assertj-core>3.27.7</version.assertj-core>
 
         <!-- Maven Plugins -->
-        <version.spotless-maven-plugin>3.4.0</version.spotless-maven-plugin>
+        <version.spotless-maven-plugin>3.5.0</version.spotless-maven-plugin>
         <version.pnc-ide-config>1.1.0</version.pnc-ide-config>
         <version.transformer-maven-plugin>1.0.0</version.transformer-maven-plugin>
 
