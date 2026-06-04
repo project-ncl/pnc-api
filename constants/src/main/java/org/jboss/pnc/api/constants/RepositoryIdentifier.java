@@ -18,9 +18,21 @@
 package org.jboss.pnc.api.constants;
 
 /**
- * This is a wrapper class to ensure backwards compatibility. It should eventually
- * be removed.
+ * Used to indentify target repository in PNC.
  */
-@Deprecated
-public class ReposiotryIdentifier extends RepositoryIdentifier {
+public class RepositoryIdentifier {
+
+    public static final String INDY_MAVEN = "indy-maven";
+
+    public static final String INDY_NPM = "indy-npm";
+
+    public static final String DISTRIBUTION_ARCHIVE = "distribution-archive";
+
+    public static final String ARTIFACTORY_MAVEN = "artifactory-maven";
+
+    public static final String ARTIFACTORY_NPM = "artifactory-npm";
+
+    public static final String ARTIFACTORY_RPM = "artifactory-rpm";
+
+    public static final String ARTIFACTORY_HTTP = "artifactory-http";
 }
