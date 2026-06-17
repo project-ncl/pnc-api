@@ -4,8 +4,6 @@
  */
 package org.jboss.pnc.api.trackingservice.dto;
 
-import java.util.Set;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.EqualsAndHashCode;
@@ -40,9 +38,10 @@ public class TrackedEntry extends TrackedArtifact implements Comparable<TrackedE
     private String localUrl;
 
     /**
-     * A set of Unix timestamps representing when this artifact was accessed or recorded.
+     * A Unix timestamp representing when this artifact was accessed or recorded. If it is accessed multiple times, only
+     * the first occurrence is recorded.
      */
-    private Set<Long> timestamps;
+    private Long timestamp;
 
     @Override
     public int compareTo(final TrackedEntry other) {

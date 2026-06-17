@@ -27,5 +27,5 @@ public class TrackDownloadRequest extends TrackedArtifact {
      * PNC the origin is expected to be empty.
      */
     @EqualsAndHashCode.Include
-    private String originUrl;
+    String originUrl;
 }

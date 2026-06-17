@@ -72,12 +72,11 @@ public interface ReportEndpoint {
      *
      * @param id The {@code trackingId} of the tracking report.
      * @param request The metadata containing artifact details (path, checksums, etc.).
-     * @throws WebApplicationException with 409 status if the report has already been sealed.
      */
     @Operation(summary = "Track a build output (artifact produced by the build).")
     @APIResponse(responseCode = "204", description = "Upload tracked.")
     @APIResponse(responseCode = "409", description = "Report is sealed.")
-    @Path("/{id}/artifacts/uploads")
+    @Path("/{id}/uploads")
     @POST
     void trackUpload(@PathParam("id") String id, TrackUploadRequest request);
 
@@ -86,12 +85,11 @@ public interface ReportEndpoint {
      *
      * @param id The {@code trackingId} of the tracking report.
      * @param request The metadata containing dependency details (origin, checksums, etc.).
-     * @throws WebApplicationException with 409 status if the report has already been sealed.
      */
     @Operation(summary = "Track a build dependency (artifact consumed by the build).")
     @APIResponse(responseCode = "204", description = "Download tracked.")
     @APIResponse(responseCode = "409", description = "Report is sealed.")
-    @Path("/{id}/artifacts/downloads")
+    @Path("/{id}/downloads")
     @POST
     void trackDownload(@PathParam("id") String id, TrackDownloadRequest request);
 
@@ -102,7 +100,6 @@ public interface ReportEndpoint {
      * </p>
      *
      * @param id The {@code trackingId} of the report to seal.
-     * @throws WebApplicationException with 404 status if the report does not exist.
      */
     @Operation(summary = "Seal the tracking report for the specified key, to prevent further content logging.")
     @APIResponse(responseCode = "204", description = "Tracking report sealed.")
@@ -116,11 +113,11 @@ public interface ReportEndpoint {
      *
      * @param id The {@code trackingId} of the tracking report.
      * @return The comprehensive {@link TrackingReport} object.
-     * @throws WebApplicationException with 404 status if the report is not found.
      */
     @Operation(summary = "Gets the tracking report for the specified ID.")
     @APIResponse(responseCode = "200", description = "The tracked content report.")
     @APIResponse(responseCode = "404", description = "No such tracking report.")
+    @APIResponse(responseCode = "409", description = "Report is not SEALED.")
     @Path("/{id}")
     @GET
     TrackingReport getReport(@PathParam("id") String id);
@@ -130,12 +127,11 @@ public interface ReportEndpoint {
      *
      * @param id The {@code trackingId} of the tracking report.
      * @return A list of storage paths for artifacts produced by this build.
-     * @throws WebApplicationException with 404 status if the report does not exist.
      */
     @Operation(summary = "Get only the paths of uploaded artifacts for a given build.")
     @APIResponse(responseCode = "200", description = "List of upload paths.")
     @APIResponse(responseCode = "404", description = "No such tracking report.")
-    @Path("/{id}/artifacts/uploads/paths")
+    @Path("/{id}/uploads/paths")
     @GET
     List<String> getUploadPaths(@PathParam("id") String id);
 
