@@ -2,7 +2,7 @@
  * Copyright 2026 Red Hat, Inc.
  * SPDX-License-Identifier: Apache-2.0
  */
-package org.jboss.pnc.api.trackingservice.dto;
+package org.jboss.pnc.api.tracker.dto;
 
 import org.jboss.pnc.api.dto.RepositoryId;
 

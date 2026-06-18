@@ -2,7 +2,7 @@
  * Copyright 2026 Red Hat, Inc.
  * SPDX-License-Identifier: Apache-2.0
  */
-package org.jboss.pnc.api.trackingservice.rest;
+package org.jboss.pnc.api.tracker.rest;
 
 import java.util.List;
 
@@ -20,9 +20,9 @@ import javax.ws.rs.core.MediaType;
 
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
-import org.jboss.pnc.api.trackingservice.dto.TrackDownloadRequest;
-import org.jboss.pnc.api.trackingservice.dto.TrackUploadRequest;
-import org.jboss.pnc.api.trackingservice.dto.TrackingReport;
+import org.jboss.pnc.api.tracker.dto.TrackDownloadRequest;
+import org.jboss.pnc.api.tracker.dto.TrackUploadRequest;
+import org.jboss.pnc.api.tracker.dto.TrackingReport;
 
 /**
  * Service endpoint for managing build tracking reports.
