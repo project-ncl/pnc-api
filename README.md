@@ -1,6 +1,5 @@
 # pnc-api
 
-
 ## Description
 
 pnc-api is used to place the REST interfaces and DTOs used by the various
