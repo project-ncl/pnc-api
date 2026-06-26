@@ -1,20 +1,36 @@
 package org.jboss.pnc.api.dto;
 
+import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.jboss.pnc.api.tracker.dto.PackageType;
+
 import lombok.Builder;
 import lombok.Value;
 import lombok.extern.jackson.Jacksonized;
 
 /**
- * Repository identification in Artifactory.
+ * Repository identification value object representing a unique identifier for a repository in Artifactory.
+ * Comprises a project name and the specific repository name. Also includes a package type included even though it's not
+ * needed for identifying the repository.
  */
 @Builder
 @Value
 @Jacksonized
 public class RepositoryId implements Comparable<RepositoryId> {
 
+    /** The name of the project this repository belongs to. */
     private String project;
 
+    /** The type of packages managed by this repository. */
+    private PackageType packageType;
+
+    /** The specific name of the repository. */
     private String name;
+
+    private static final Pattern REPOSITORY_PATTERN = Pattern
+            .compile("(?<project>[^:]+):(?<packageType>[^:]+):(?<name>[^:]+)");
 
     /**
      * Generates path element in Artifactory for artifacts retrieval.
@@ -26,33 +42,52 @@ public class RepositoryId implements Comparable<RepositoryId> {
     }
 
     /**
-     * Converts the repository identifier to a canonical string format "project:name".
+     * Converts the repository identifier to a canonical string format "project:packageType:name".
      * This format is intended for API communication and storage.
      *
-     * @return The formatted string "project:name".
+     * @return The formatted string "project:packageType:name".
      */
     public String getIdentifier() {
-        return project + ":" + name;
+        return project + ":" + packageType + ":" + name;
     }
 
     /**
-     * Parses a string representation in the format "project:name" back into a {@link RepositoryId} object.
+     * Factory method to parse a {@code RepositoryId} from a composite string format.
+     * <p>
+     * The expected format is {@code "project:packageType:name"} (e.g., {@code "pnc:mvn:imports"}).
      *
-     * @param repositoryId The string to parse.
-     * @return A new {@link RepositoryId} instance.
+     * @param input the raw string representation to parse (must not be null)
+     * @return a fully constructed and validated {@code RepositoryId} instance
+     * @throws NullPointerException if the input string is null
      * @throws IllegalArgumentException if the format is invalid.
      */
     public static RepositoryId parse(String repositoryId) {
-        if (repositoryId == null || !repositoryId.contains(":")) {
-            throw new IllegalArgumentException("Invalid RepositoryId format. Expected 'project:name'.");
+        Objects.requireNonNull(repositoryId, "The input must not be null");
+
+        Matcher matcher = REPOSITORY_PATTERN.matcher(repositoryId);
+        if (!matcher.matches()) {
+            throw new IllegalArgumentException(
+                    "Invalid RepositoryId format. Expected 'project:packageType:name', but was: " + repositoryId);
         }
 
-        String[] parts = repositoryId.split(":", 2);
-        return new RepositoryId(parts[0], parts[1]);
+        String packageTypeStr = matcher.group("packageType");
+        PackageType packageType;
+        try {
+            packageType = PackageType.valueOf(packageTypeStr);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("Unknown packageType: " + packageTypeStr, e);
+        }
+        return RepositoryId.builder()
+                .project(matcher.group("project"))
+                .packageType(packageType)
+                .name(matcher.group("name"))
+                .build();
     }
 
     @Override
     public int compareTo(RepositoryId o) {
+        // Compares paths of the 2 repositories because it is composed of project and name and there can't be 2 repos
+        // in Artifactory with the same path but different packageType.
         return getPath().compareTo(o.getPath());
     }
 
