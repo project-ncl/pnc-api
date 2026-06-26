@@ -22,17 +22,19 @@ package org.jboss.pnc.api.constants;
  */
 public class RepositoryIdentifier {
 
+    @Deprecated
     public static final String INDY_MAVEN = "indy-maven";
 
+    @Deprecated
     public static final String INDY_NPM = "indy-npm";
 
     public static final String DISTRIBUTION_ARCHIVE = "distribution-archive";
 
-    public static final String ARTIFACTORY_MAVEN = "artifactory-maven";
+    public static final String MAVEN = "default-maven";
 
-    public static final String ARTIFACTORY_NPM = "artifactory-npm";
+    public static final String NPM = "default-npm";
 
-    public static final String ARTIFACTORY_RPM = "artifactory-rpm";
+    public static final String RPM = "default-rpm";
 
-    public static final String ARTIFACTORY_HTTP = "artifactory-http";
+    public static final String HTTP = "default-http";
 }
