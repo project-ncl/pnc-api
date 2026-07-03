@@ -90,7 +90,7 @@
         <version.jackson-databind>2.22.0</version.jackson-databind>
 
         <!-- Test dependencies -->
-        <version.hibernate-validator>6.2.5.Final</version.hibernate-validator>
+        <version.hibernate-validator>9.1.1.Final</version.hibernate-validator>
         <version.junit-jupiter-api>6.1.0</version.junit-jupiter-api>
         <version.assertj-core>3.27.7</version.assertj-core>
 
