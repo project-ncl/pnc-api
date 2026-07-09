@@ -70,7 +70,7 @@ public @interface GitRepositoryURL {
     String organization() default "";
 
     /**
-     * @return the organization the annotated string must match, e.g. 'pnc-api'. By default, any repository is allowed.
+     * @return the repository the annotated string must match, e.g. 'pnc-api'. By default, any repository is allowed.
      */
     String repository() default "";
 }
