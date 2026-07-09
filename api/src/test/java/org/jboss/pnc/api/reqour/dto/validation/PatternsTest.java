@@ -127,6 +127,66 @@ public class PatternsTest {
     }
 
     @Test
+    void nonScpLike_withNestedOrganizationAndRepoEndingWithDotGit_isValid() {
+        String externalUrl = "https://github.com/org/suborg/my-repo.git";
+
+        GitRepositoryURLValidator.ParsedURL url = GitRepositoryURLValidator.parseURL(externalUrl);
+
+        assertThat(url).isNotNull();
+        assertThat(url.getProtocol()).isEqualTo("https");
+        assertThat(url.getUser()).isNull();
+        assertThat(url.getHost()).isEqualTo("github.com");
+        assertThat(url.getPort()).isEqualTo(-1);
+        assertThat(url.getOrganization()).isEqualTo("org/suborg");
+        assertThat(url.getRepository()).isEqualTo("my-repo.git");
+    }
+
+    @Test
+    void nonScpLike_withNestedOrganizationAndRepoNotEndingWithDotGit_isValid() {
+        String externalUrl = "https://github.com/org/suborg/my-repo";
+
+        GitRepositoryURLValidator.ParsedURL url = GitRepositoryURLValidator.parseURL(externalUrl);
+
+        assertThat(url).isNotNull();
+        assertThat(url.getProtocol()).isEqualTo("https");
+        assertThat(url.getUser()).isNull();
+        assertThat(url.getHost()).isEqualTo("github.com");
+        assertThat(url.getPort()).isEqualTo(-1);
+        assertThat(url.getOrganization()).isEqualTo("org/suborg");
+        assertThat(url.getRepository()).isEqualTo("my-repo");
+    }
+
+    @Test
+    void nonScpLike_withNestedOrganizationsAndRepoEndingWithDotGit_isValid() {
+        String externalUrl = "https://github.com/org/suborg/subsuborg/my-repo.git";
+
+        GitRepositoryURLValidator.ParsedURL url = GitRepositoryURLValidator.parseURL(externalUrl);
+
+        assertThat(url).isNotNull();
+        assertThat(url.getProtocol()).isEqualTo("https");
+        assertThat(url.getUser()).isNull();
+        assertThat(url.getHost()).isEqualTo("github.com");
+        assertThat(url.getPort()).isEqualTo(-1);
+        assertThat(url.getOrganization()).isEqualTo("org/suborg/subsuborg");
+        assertThat(url.getRepository()).isEqualTo("my-repo.git");
+    }
+
+    @Test
+    void nonScpLike_withNestedOrganizationsAndRepoNotEndingWithDotGit_isValid() {
+        String externalUrl = "https://github.com/org/suborg/subsuborg/my-repo";
+
+        GitRepositoryURLValidator.ParsedURL url = GitRepositoryURLValidator.parseURL(externalUrl);
+
+        assertThat(url).isNotNull();
+        assertThat(url.getProtocol()).isEqualTo("https");
+        assertThat(url.getUser()).isNull();
+        assertThat(url.getHost()).isEqualTo("github.com");
+        assertThat(url.getPort()).isEqualTo(-1);
+        assertThat(url.getOrganization()).isEqualTo("org/suborg/subsuborg");
+        assertThat(url.getRepository()).isEqualTo("my-repo");
+    }
+
+    @Test
     void nonScpLike_noHost_isInvalid() {
         String externalUrl = "/project";
 
@@ -262,6 +322,45 @@ public class PatternsTest {
         assertThat(url.getPort()).isEqualTo(-1);
         assertThat(url.getOrganization()).isEqualTo("super-cool-org");
         assertThat(url.getRepository()).isEqualTo("my-repo");
+    }
+
+    @Test
+    void scpLike_withNestedOrganization_isValid() {
+        String externalUrl = "git@github.ibm.com:org/suborg/my-repo.git";
+
+        GitRepositoryURLValidator.ParsedURL url = GitRepositoryURLValidator.parseURL(externalUrl);
+
+        assertThat(url).isNotNull();
+        assertThat(url.getProtocol()).isNull();
+        assertThat(url.getUser()).isEqualTo("git");
+        assertThat(url.getHost()).isEqualTo("github.ibm.com");
+        assertThat(url.getPort()).isEqualTo(-1);
+        assertThat(url.getOrganization()).isEqualTo("org/suborg");
+        assertThat(url.getRepository()).isEqualTo("my-repo");
+    }
+
+    @Test
+    void scpLike_withNestedOrganizations_isValid() {
+        String externalUrl = "git@github.ibm.com:org/suborg/subsuborg/my-repo.git";
+
+        GitRepositoryURLValidator.ParsedURL url = GitRepositoryURLValidator.parseURL(externalUrl);
+
+        assertThat(url).isNotNull();
+        assertThat(url.getProtocol()).isNull();
+        assertThat(url.getUser()).isEqualTo("git");
+        assertThat(url.getHost()).isEqualTo("github.ibm.com");
+        assertThat(url.getPort()).isEqualTo(-1);
+        assertThat(url.getOrganization()).isEqualTo("org/suborg/subsuborg");
+        assertThat(url.getRepository()).isEqualTo("my-repo");
+    }
+
+    @Test
+    void scpLike_withNestedOrganizationsAndWithRepoNotEndingDotGit_isInvalid() {
+        String externalUrl = "git@github.ibm.com:org/suborg/subsuborg/my-repo";
+
+        GitRepositoryURLValidator.ParsedURL url = GitRepositoryURLValidator.parseURL(externalUrl);
+
+        assertThat(url).isNull();
     }
 
     @Test
