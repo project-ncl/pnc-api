@@ -1,5 +1,8 @@
 package org.jboss.pnc.api.repositorydriver.dto;
 
+import java.time.Instant;
+import java.util.Map;
+
 import org.jboss.pnc.api.dto.Request;
 import org.jboss.pnc.api.enums.BuildCategory;
 import org.jboss.pnc.api.enums.BuildType;
@@ -28,4 +31,12 @@ public class RepositoryPromoteRequest {
     private final Request callback;
     private final Request heartBeat;
     private final String buildConfigurationId;
+    private final String buildConfigurationName;
+
+    //Artifactory specific fields
+    private final String rtBuildName;
+    private final String rtBuildVersion;
+
+    private final Instant rtBuildStartTime;
+    private final Map<String, String> rtEnvironmentTools;
 }
