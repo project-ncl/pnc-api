@@ -4,12 +4,14 @@ updates:
   directory: "/"
   schedule:
     interval: weekly
+  ignore:
+    - dependency-name: "org.eclipse.microprofile.openapi:microprofile-openapi-api"
+      versions: [ ">=4.0.0" ]
   cooldown:
     default-days: 7
-  open-pull-requests-limit: 10
     exclude:
-      - "org.jboss.da:*"
-      - "org.jboss.pnc*:*"        # match org.jboss.pnc:xyz and org.jboss.pnc.group:xyz
+    - "org.jboss.da:*"
+    - "org.jboss.pnc*:*"        # match org.jboss.pnc:xyz and org.jboss.pnc.group:xyz
 
 - package-ecosystem: "github-actions" # Also update Github actions
   directory: "/"
