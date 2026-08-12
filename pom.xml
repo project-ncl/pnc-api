@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
   ~ JBoss, Home of Professional Open Source.
   ~ Copyright 2021 Red Hat, Inc., and individual contributors
@@ -15,228 +16,231 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-     <groupId>org.jboss</groupId>
-     <artifactId>jboss-parent</artifactId>
-     <version>53</version>
-     <relativePath />
-    </parent>
+  <parent>
+    <groupId>org.jboss</groupId>
+    <artifactId>jboss-parent</artifactId>
+    <version>53</version>
+    <relativePath/>
+  </parent>
 
-    <groupId>org.jboss.pnc</groupId>
-    <artifactId>pnc-api-parent</artifactId>
-    <version>3.6.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
-    <name>pnc-api-parent</name>
+  <groupId>org.jboss.pnc</groupId>
+  <artifactId>pnc-api-parent</artifactId>
+  <version>3.6.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>pnc-api-parent</name>
 
-    <licenses>
-        <license>
-            <name>Apache License, Version 2.0</name>
-            <distribution>repo</distribution>
-            <url>https://www.apache.org/licenses/LICENSE-2.0.html</url>
-        </license>
-    </licenses>
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.html</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
 
-    <scm>
-        <connection>scm:git:git@github.com:project-ncl/pnc-api.git</connection>
-        <url>scm:git:git@github.com:project-ncl/pnc-api.git</url>
-        <developerConnection>scm:git:git@github.com:project-ncl/pnc-api.git</developerConnection>
-        <tag>HEAD</tag>
-    </scm>
+  <developers>
+    <developer>
+      <organization>RedHat</organization>
+      <organizationUrl>https://www.redhat.com</organizationUrl>
+    </developer>
+  </developers>
 
-    <developers>
-        <developer>
-            <organization>RedHat</organization>
-            <organizationUrl>https://www.redhat.com</organizationUrl>
-        </developer>
-    </developers>
+  <modules>
+    <module>constants</module>
+    <module>api</module>
+  </modules>
 
-    <modules>
-        <module>constants</module>
-        <module>api</module>
-    </modules>
+  <scm>
+    <connection>scm:git:git@github.com:project-ncl/pnc-api.git</connection>
+    <developerConnection>scm:git:git@github.com:project-ncl/pnc-api.git</developerConnection>
+    <tag>HEAD</tag>
+    <url>scm:git:git@github.com:project-ncl/pnc-api.git</url>
+  </scm>
 
-    <repositories>
-        <repository>
-            <name>Central Portal Snapshots</name>
-            <id>central-portal-snapshots</id>
-            <url>https://central.sonatype.com/repository/maven-snapshots/</url>
-            <releases>
-              <enabled>false</enabled>
-            </releases>
-            <snapshots>
-              <enabled>true</enabled>
-            </snapshots>
-      </repository>
-    </repositories>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.release>8</maven.compiler.release>
+    <maven.compiler.testRelease>8</maven.compiler.testRelease>
 
-        <maven.compiler.release>8</maven.compiler.release>
-        <maven.compiler.testRelease>8</maven.compiler.testRelease>
+    <!-- Specifications -->
+    <version.javax.ws.rs-api>2.1.1</version.javax.ws.rs-api>
+    <version.javax.json.bind-api>1.0</version.javax.json.bind-api>
+    <version.javax.validation-api>2.0.1.Final</version.javax.validation-api>
+    <version.microprofile-openapi-api>3.1.2</version.microprofile-openapi-api>
 
-        <!-- Specifications -->
-        <version.javax.ws.rs-api>2.1.1</version.javax.ws.rs-api>
-        <version.javax.json.bind-api>1.0</version.javax.json.bind-api>
-        <version.javax.validation-api>2.0.1.Final</version.javax.validation-api>
-        <version.microprofile-openapi-api>3.1.2</version.microprofile-openapi-api>
+    <!-- Regular dependencies -->
+    <version.lombok>1.18.46</version.lombok>
+    <version.jackson-databind>2.22.1</version.jackson-databind>
 
-        <!-- Regular dependencies -->
-        <version.lombok>1.18.46</version.lombok>
-        <version.jackson-databind>2.22.1</version.jackson-databind>
+    <!-- Test dependencies -->
+    <version.hibernate-validator>6.2.5.Final</version.hibernate-validator>
+    <version.junit-jupiter-api>6.1.2</version.junit-jupiter-api>
+    <version.assertj-core>3.27.7</version.assertj-core>
 
-        <!-- Test dependencies -->
-        <version.hibernate-validator>6.2.5.Final</version.hibernate-validator>
-        <version.junit-jupiter-api>6.1.2</version.junit-jupiter-api>
-        <version.assertj-core>3.27.7</version.assertj-core>
+    <!-- Maven Plugins -->
+    <version.spotless-maven-plugin>3.9.0</version.spotless-maven-plugin>
+    <version.pnc-ide-config>1.1.0</version.pnc-ide-config>
+    <version.transformer-maven-plugin>1.0.0</version.transformer-maven-plugin>
 
-        <!-- Maven Plugins -->
-        <version.spotless-maven-plugin>3.9.0</version.spotless-maven-plugin>
-        <version.pnc-ide-config>1.1.0</version.pnc-ide-config>
-        <version.transformer-maven-plugin>1.0.0</version.transformer-maven-plugin>
+    <!-- Override enforcer requirements -->
+    <jdk.min.version>11</jdk.min.version>
+  </properties>
+  <dependencyManagement>
+    <dependencies>
+      <!-- Project modules, to support cross-module dependencies -->
+      <dependency>
+        <groupId>org.jboss.pnc</groupId>
+        <artifactId>pnc-api-constants</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jboss.pnc</groupId>
+        <artifactId>pnc-api</artifactId>
+        <version>${project.version}</version>
+      </dependency>
 
-        <!-- Override enforcer requirements -->
-        <jdk.min.version>11</jdk.min.version>
-    </properties>
-    <dependencyManagement>
+      <dependency>
+        <groupId>javax.ws.rs</groupId>
+        <artifactId>javax.ws.rs-api</artifactId>
+        <version>${version.javax.ws.rs-api}</version>
+      </dependency>
+      <dependency>
+        <groupId>javax.json.bind</groupId>
+        <artifactId>javax.json.bind-api</artifactId>
+        <version>${version.javax.json.bind-api}</version>
+      </dependency>
+      <dependency>
+        <groupId>javax.validation</groupId>
+        <artifactId>validation-api</artifactId>
+        <version>${version.javax.validation-api}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>${version.lombok}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>${version.jackson-databind}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.eclipse.microprofile.openapi</groupId>
+        <artifactId>microprofile-openapi-api</artifactId>
+        <version>${version.microprofile-openapi-api}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-api</artifactId>
+        <version>${version.junit-jupiter-api}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-engine</artifactId>
+        <version>${version.junit-jupiter-api}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.assertj</groupId>
+        <artifactId>assertj-core</artifactId>
+        <version>${version.assertj-core}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.hibernate.validator</groupId>
+        <artifactId>hibernate-validator</artifactId>
+        <version>${version.hibernate-validator}</version>
+        <scope>test</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <repositories>
+    <repository>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+      <id>central-portal-snapshots</id>
+      <name>Central Portal Snapshots</name>
+      <url>https://central.sonatype.com/repository/maven-snapshots/</url>
+    </repository>
+  </repositories>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>com.diffplug.spotless</groupId>
+        <artifactId>spotless-maven-plugin</artifactId>
+        <version>${version.spotless-maven-plugin}</version>
+        <configuration>
+          <java>
+            <removeUnusedImports/>
+            <importOrder>
+              <file>java-import-order.txt</file>
+            </importOrder>
+            <eclipse>
+              <file>java-formatter.xml</file>
+            </eclipse>
+            <lineEndings>UNIX</lineEndings>
+          </java>
+          <pom>
+            <sortPom>
+              <expandEmptyElements>false</expandEmptyElements>
+            </sortPom>
+          </pom>
+        </configuration>
         <dependencies>
-            <!-- Project modules, to support cross-module dependencies -->
-            <dependency>
-                <groupId>org.jboss.pnc</groupId>
-                <artifactId>pnc-api-constants</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jboss.pnc</groupId>
-                <artifactId>pnc-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>javax.ws.rs</groupId>
-                <artifactId>javax.ws.rs-api</artifactId>
-                <version>${version.javax.ws.rs-api}</version>
-            </dependency>
-            <dependency>
-                <groupId>javax.json.bind</groupId>
-                <artifactId>javax.json.bind-api</artifactId>
-                <version>${version.javax.json.bind-api}</version>
-            </dependency>
-            <dependency>
-                <groupId>javax.validation</groupId>
-                <artifactId>validation-api</artifactId>
-                <version>${version.javax.validation-api}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>${version.lombok}</version>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-databind</artifactId>
-                <version>${version.jackson-databind}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.microprofile.openapi</groupId>
-                <artifactId>microprofile-openapi-api</artifactId>
-                <version>${version.microprofile-openapi-api}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter-api</artifactId>
-                <version>${version.junit-jupiter-api}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter-engine</artifactId>
-                <version>${version.junit-jupiter-api}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.assertj</groupId>
-                <artifactId>assertj-core</artifactId>
-                <version>${version.assertj-core}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.hibernate.validator</groupId>
-                <artifactId>hibernate-validator</artifactId>
-                <version>${version.hibernate-validator}</version>
-                <scope>test</scope>
-            </dependency>
+          <dependency>
+            <groupId>org.jboss.pnc</groupId>
+            <artifactId>ide-config</artifactId>
+            <version>${version.pnc-ide-config}</version>
+          </dependency>
         </dependencies>
-    </dependencyManagement>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>com.diffplug.spotless</groupId>
-                <artifactId>spotless-maven-plugin</artifactId>
-                <version>${version.spotless-maven-plugin}</version>
-                <dependencies>
-                  <dependency>
-                    <groupId>org.jboss.pnc</groupId>
-                    <artifactId>ide-config</artifactId>
-                    <version>${version.pnc-ide-config}</version>
-                  </dependency>
-                </dependencies>
-                <configuration>
-                    <java>
-                        <removeUnusedImports />
-                        <importOrder>
-                            <file>java-import-order.txt</file>
-                         </importOrder>
-                        <eclipse>
-                            <file>java-formatter.xml</file>
-                        </eclipse>
-                        <lineEndings>UNIX</lineEndings>
-                    </java>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>apply</goal>
-                        </goals>
-                        <phase>compile</phase>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.eclipse.transformer</groupId>
-                <artifactId>transformer-maven-plugin</artifactId>
-                <version>${version.transformer-maven-plugin}</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <rules>
-                        <jakartaDefaults>true</jakartaDefaults>
-                    </rules>
-                    <classifier>jakarta</classifier>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>default-jar</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                        <configuration>
-                            <artifact>
-                                <groupId>${project.groupId}</groupId>
-                                <artifactId>${project.artifactId}</artifactId>
-                                <version>${project.version}</version>
-                            </artifact>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
+        <executions>
+          <execution>
+            <goals>
+              <goal>apply</goal>
+            </goals>
+            <phase>compile</phase>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.eclipse.transformer</groupId>
+        <artifactId>transformer-maven-plugin</artifactId>
+        <version>${version.transformer-maven-plugin}</version>
+        <extensions>true</extensions>
+        <configuration>
+          <rules>
+            <jakartaDefaults>true</jakartaDefaults>
+          </rules>
+          <classifier>jakarta</classifier>
+        </configuration>
+        <executions>
+          <execution>
+            <id>default-jar</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+            <configuration>
+              <artifact>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>${project.artifactId}</artifactId>
+                <version>${project.version}</version>
+              </artifact>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>
-
