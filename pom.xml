@@ -83,11 +83,13 @@
     <!-- Maven Plugins -->
     <version.spotless-maven-plugin>3.9.0</version.spotless-maven-plugin>
     <version.pnc-ide-config>1.1.0</version.pnc-ide-config>
+    <version.extra-enforcer-rules>1.10.0</version.extra-enforcer-rules>
     <version.transformer-maven-plugin>1.0.0</version.transformer-maven-plugin>
 
     <!-- Override enforcer requirements -->
     <jdk.min.version>11</jdk.min.version>
   </properties>
+
   <dependencyManagement>
     <dependencies>
       <!-- Project modules, to support cross-module dependencies -->
@@ -211,6 +213,35 @@
               <goal>apply</goal>
             </goals>
             <phase>compile</phase>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <dependencies>
+          <dependency>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>extra-enforcer-rules</artifactId>
+            <version>${version.extra-enforcer-rules}</version>
+          </dependency>
+        </dependencies>
+        <executions>
+          <execution>
+            <id>enforce-bytecode-version</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <enforceBytecodeVersion>
+                  <maxJdkVersion>1.8</maxJdkVersion>
+                  <ignoredScopes>
+                    <ignoredScope>test</ignoredScope>
+                  </ignoredScopes>
+                </enforceBytecodeVersion>
+              </rules>
+            </configuration>
           </execution>
         </executions>
       </plugin>
