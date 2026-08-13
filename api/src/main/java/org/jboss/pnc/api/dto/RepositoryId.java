@@ -4,7 +4,10 @@ import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.jboss.pnc.api.tracker.dto.PackageType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Builder;
 import lombok.Value;
@@ -37,6 +40,8 @@ public class RepositoryId implements Comparable<RepositoryId> {
      *
      * @return generated path element
      */
+    @JsonIgnore
+    @Schema(hidden = true)
     public String getPath() {
         return project + "-" + name;
     }
@@ -47,6 +52,8 @@ public class RepositoryId implements Comparable<RepositoryId> {
      *
      * @return The formatted string "project:packageType:name".
      */
+    @JsonIgnore
+    @Schema(hidden = true)
     public String getIdentifier() {
         return project + ":" + packageType + ":" + name;
     }
@@ -73,7 +80,7 @@ public class RepositoryId implements Comparable<RepositoryId> {
         String packageTypeStr = matcher.group("packageType");
         PackageType packageType;
         try {
-            packageType = PackageType.valueOf(packageTypeStr);
+            packageType = PackageType.fromCode(packageTypeStr);
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("Unknown packageType: " + packageTypeStr, e);
         }
