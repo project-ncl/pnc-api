@@ -36,13 +36,13 @@ public class RepositoryId implements Comparable<RepositoryId> {
             .compile("(?<project>[^:]+):(?<packageType>[^:]+):(?<name>[^:]+)");
 
     /**
-     * Generates path element in Artifactory for artifacts retrieval.
+     * Generates repository key in Artifactory used as a path element for artifacts retrieval.
      *
-     * @return generated path element
+     * @return generated repository key
      */
     @JsonIgnore
     @Schema(hidden = true)
-    public String getPath() {
+    public String getRepoKey() {
         return project + "-" + name;
     }
 
@@ -95,7 +95,7 @@ public class RepositoryId implements Comparable<RepositoryId> {
     public int compareTo(RepositoryId o) {
         // Compares paths of the 2 repositories because it is composed of project and name and there can't be 2 repos
         // in Artifactory with the same path but different packageType.
-        return getPath().compareTo(o.getPath());
+        return getRepoKey().compareTo(o.getRepoKey());
     }
 
 }
