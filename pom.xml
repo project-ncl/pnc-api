@@ -72,7 +72,7 @@
     <version.microprofile-openapi-api>3.1.2</version.microprofile-openapi-api>
 
     <!-- Regular dependencies -->
-    <version.lombok>1.18.46</version.lombok>
+    <version.lombok>1.18.48</version.lombok>
     <version.jackson-databind>2.22.2</version.jackson-databind>
 
     <!-- Test dependencies -->
