@@ -6,7 +6,6 @@ import java.util.List;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +15,7 @@ import lombok.extern.jackson.Jacksonized;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Data
 @Jacksonized
-@Builder(builderClassName = "Builder")
+@lombok.Builder(builderClassName = "Builder")
 public class ComponentVersion {
     @NonNull
     private String name;

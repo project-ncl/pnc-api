@@ -27,7 +27,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
 import lombok.extern.jackson.Jacksonized;
@@ -37,7 +36,7 @@ import lombok.extern.jackson.Jacksonized;
  * @author jbrazdil
  */
 @Data
-@Builder(builderClassName = "Builder")
+@lombok.Builder(builderClassName = "Builder")
 @AllArgsConstructor
 @ToString
 @Jacksonized

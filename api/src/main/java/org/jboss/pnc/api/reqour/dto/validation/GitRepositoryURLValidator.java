@@ -24,7 +24,6 @@ import javax.validation.ConstraintValidatorContext;
 
 import org.jboss.pnc.api.dto.validation.DomainNameUtil;
 
-import lombok.Builder;
 import lombok.Value;
 
 /**
@@ -130,7 +129,7 @@ public class GitRepositoryURLValidator implements ConstraintValidator<GitReposit
         return (portMatch == null) ? -1 : Integer.parseInt(portMatch);
     }
 
-    @Builder(builderClassName = "Builder")
+    @lombok.Builder(builderClassName = "Builder")
     @Value
     public static class ParsedURL {
 

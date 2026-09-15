@@ -18,7 +18,6 @@
 
 package org.jboss.pnc.api.builddriver.dto;
 
-import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.jackson.Jacksonized;
@@ -29,7 +28,7 @@ import lombok.extern.jackson.Jacksonized;
 @RequiredArgsConstructor
 @Data
 @Jacksonized
-@Builder(builderClassName = "Builder")
+@lombok.Builder(builderClassName = "Builder")
 public class BuildCancelRequest {
 
     private final String buildExecutionId;
