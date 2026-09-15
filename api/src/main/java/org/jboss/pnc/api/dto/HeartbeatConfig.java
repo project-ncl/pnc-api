@@ -24,14 +24,13 @@ import javax.validation.Valid;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.jackson.Jacksonized;
 
 @RequiredArgsConstructor
 @Data
-@Builder(builderClassName = "Builder")
+@lombok.Builder(builderClassName = "Builder")
 @Jacksonized
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class HeartbeatConfig {

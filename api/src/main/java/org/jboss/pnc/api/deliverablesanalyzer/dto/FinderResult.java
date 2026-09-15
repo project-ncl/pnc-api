@@ -9,13 +9,12 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import lombok.Builder;
 import lombok.Data;
 import lombok.extern.jackson.Jacksonized;
 
 @Data
 @Jacksonized
-@Builder(builderClassName = "Builder")
+@lombok.Builder(builderClassName = "Builder")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class FinderResult {
 

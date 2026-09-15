@@ -20,7 +20,6 @@ package org.jboss.pnc.api.environmentdriver.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.jackson.Jacksonized;
@@ -31,7 +30,7 @@ import lombok.extern.jackson.Jacksonized;
 @RequiredArgsConstructor
 @Data
 @Jacksonized
-@Builder(builderClassName = "Builder")
+@lombok.Builder(builderClassName = "Builder")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class EnvironmentCompleteResponse {
 

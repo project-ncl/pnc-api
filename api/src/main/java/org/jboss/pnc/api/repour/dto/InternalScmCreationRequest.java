@@ -26,7 +26,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.Data;
 import lombok.ToString;
@@ -35,7 +34,7 @@ import lombok.ToString;
  * Request DTO to create an internal scm via Repour. The endpoint is POST /internal-scm
  */
 @Data
-@Builder(builderClassName = "Builder")
+@lombok.Builder(builderClassName = "Builder")
 @AllArgsConstructor
 @ToString(callSuper = true)
 @JsonDeserialize(builder = InternalScmCreationRequest.Builder.class)

@@ -22,7 +22,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
 
@@ -31,7 +30,7 @@ import lombok.ToString;
  * @author jbrazdil
  */
 @Data
-@Builder(builderClassName = "Builder")
+@lombok.Builder(builderClassName = "Builder")
 @ToString(callSuper = true)
 @JsonDeserialize(builder = TranslateResponse.Builder.class)
 @JsonIgnoreProperties(ignoreUnknown = true)

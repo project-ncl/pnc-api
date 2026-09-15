@@ -43,7 +43,7 @@ import lombok.extern.jackson.Jacksonized;
 @Data
 @AllArgsConstructor
 @Jacksonized
-@Builder(builderClassName = "Builder")
+@lombok.Builder(builderClassName = "Builder")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Request {
 

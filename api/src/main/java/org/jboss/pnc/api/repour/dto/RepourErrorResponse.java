@@ -23,7 +23,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
 
@@ -31,7 +30,7 @@ import lombok.ToString;
  * DTO response when request doesn't work for Repour
  */
 @Data
-@Builder(builderClassName = "Builder")
+@lombok.Builder(builderClassName = "Builder")
 @AllArgsConstructor
 @ToString(callSuper = true)
 @JsonDeserialize(builder = RepourErrorResponse.Builder.class)
