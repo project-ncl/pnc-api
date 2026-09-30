@@ -21,7 +21,6 @@ import java.util.Collection;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Positive;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -54,9 +53,6 @@ import lombok.extern.jackson.Jacksonized;
 public class Artifact {
 
     private final BuildSystemType buildSystemType;
-
-    @Positive
-    private final Long brewId;
 
     private final String pncId;
 
