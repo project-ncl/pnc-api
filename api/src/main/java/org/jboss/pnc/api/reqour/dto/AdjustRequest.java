@@ -90,11 +90,6 @@ public class AdjustRequest {
     String pncDefaultAlignmentParameters;
 
     /**
-     * Is pulling from brew enabled?
-     */
-    boolean brewPullActive;
-
-    /**
      * Task ID which is assigned to the asynchronous execution of the request
      */
     @NotBlank
