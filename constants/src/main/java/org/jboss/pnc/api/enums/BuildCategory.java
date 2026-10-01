@@ -27,10 +27,6 @@ public enum BuildCategory {
      * The build is built to be used in On-Premise products or Managed services.
      */
     STANDARD,
-    /**
-     * The build is built to be used in Managed services only.
-     */
-    SERVICE,
 
     /**
      * The build is built to be used for Project Lightwell only.
