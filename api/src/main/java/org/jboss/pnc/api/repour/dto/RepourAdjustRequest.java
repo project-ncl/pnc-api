@@ -56,7 +56,6 @@ public class RepourAdjustRequest {
 
     private String buildType;
     private String defaultAlignmentParams;
-    private boolean brewPullActive;
 
     @JsonPOJOBuilder(withPrefix = "")
     @JsonIgnoreProperties(ignoreUnknown = true)

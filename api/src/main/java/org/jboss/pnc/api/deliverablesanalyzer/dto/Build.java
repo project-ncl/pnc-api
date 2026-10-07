@@ -21,7 +21,6 @@ import java.util.Objects;
 import java.util.Set;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Positive;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -46,11 +45,6 @@ public class Build {
 
     private final BuildSystemType buildSystemType;
 
-    @Positive
-    private final Long brewId;
-
-    private final String brewNVR;
-
     private final String pncId;
 
     @Valid
@@ -64,15 +58,7 @@ public class Build {
         return fromPNC(id, artifacts, false);
     }
 
-    public static Build fromKoji(long id, String nvr, Set<Artifact> artifacts) {
-        return fromKoji(id, nvr, artifacts, false);
-    }
-
     public static Build fromPNC(String id, Set<Artifact> artifacts, boolean isImport) {
-        return new Build(BuildSystemType.PNC, null, null, Objects.requireNonNull(id), artifacts, isImport);
-    }
-
-    public static Build fromKoji(long id, String nvr, Set<Artifact> artifacts, boolean isImport) {
-        return new Build(BuildSystemType.BREW, id, Objects.requireNonNull(nvr), null, artifacts, isImport);
+        return new Build(BuildSystemType.PNC, Objects.requireNonNull(id), artifacts, isImport);
     }
 }
