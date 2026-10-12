@@ -34,10 +34,6 @@ public enum BuildConfigurationParameterKeys {
             "Additional parameters, which will be passed to the PME CLI executable during the alignment before the "
                     + "build. The format is as you would enter them on a command line, and each MUST start with a "
                     + "dash."),
-    BREW_BUILD_NAME(
-            "Specify the Brew build name of the build configuration. This is used to override the default value, and "
-                    + "can be useful for builds that disable PME. For Maven builds the format should be "
-                    + "'<groupid>:<artifactid>'."),
     BUILD_CATEGORY(
             "Specify the category of the build. It can be either SERVICE for managed service builds or STANDARD "
                     + "(default if not present) for on-premise builds. Empty value is not allowed.",

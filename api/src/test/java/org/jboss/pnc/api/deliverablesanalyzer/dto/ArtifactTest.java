@@ -30,8 +30,7 @@ public class ArtifactTest {
     @Test
     public void testMilestoneVersionPattern() throws JsonProcessingException {
         MavenArtifact mavenArtifact = MavenArtifact.builder()
-                .brewId(123l)
-                .buildSystemType(BuildSystemType.BREW)
+                .buildSystemType(BuildSystemType.PNC)
                 .builtFromSource(false)
                 .classifier("Foo")
                 .filename("foo.bar")

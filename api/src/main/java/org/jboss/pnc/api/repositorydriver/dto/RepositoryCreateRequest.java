@@ -26,7 +26,6 @@ public class RepositoryCreateRequest {
     private final BuildCategory buildCategory;
     private final boolean tempBuild;
 
-    private final boolean brewPullActive;
     private final List<String> extraRepositories;
 
 }

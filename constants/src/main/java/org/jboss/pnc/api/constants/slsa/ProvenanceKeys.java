@@ -50,7 +50,6 @@ public class ProvenanceKeys {
     public static final String PROVENANCE_V1_BUILD_DETAILS_TEMPORARY = "temporary";
     public static final String PROVENANCE_V1_BUILD_DETAILS_SCRIPT = "script";
     public static final String PROVENANCE_V1_BUILD_DETAILS_NAME = "name";
-    public static final String PROVENANCE_V1_BUILD_DETAILS_BREW_PULL_ACTIVE = "BREW_PULL_ACTIVE";
     public static final String PROVENANCE_V1_BUILD_DETAILS_PARAMETERS = "parameters";
     public static final String PROVENANCE_V1_BUILD_DETAILS_DEFAULT_ALIGN_PARAMETERS = "defaultAlignmentParameters";
 
