@@ -101,6 +101,13 @@
 
         <!-- Override enforcer requirements -->
         <jdk.min.version>11</jdk.min.version>
+
+        <!--
+            jboss parent override to fix release workflow failure
+            TODO: remove once https://github.com/mavenplugins/central-publishing-maven-plugin/pull/80 is fixed,
+                  or once we start using jboss-parent version 55 or higher
+        -->
+        <version.central-publishing.plugin>0.12.0</version.central-publishing.plugin>
     </properties>
     <dependencyManagement>
         <dependencies>
