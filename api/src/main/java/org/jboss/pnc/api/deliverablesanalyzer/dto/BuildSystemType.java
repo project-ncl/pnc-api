@@ -23,5 +23,5 @@ package org.jboss.pnc.api.deliverablesanalyzer.dto;
  */
 public enum BuildSystemType {
 
-    BREW, PNC
+    PNC
 }
