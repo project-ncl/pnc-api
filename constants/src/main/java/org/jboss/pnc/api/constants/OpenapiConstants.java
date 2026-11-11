@@ -27,6 +27,9 @@ public class OpenapiConstants {
     public static final String BAD_REQUEST_CODE = "400";
     public static final String CONFLICT_DESCRIPTION = "Conflict with another existing resources";
     public static final String CONFLICT_CODE = "409";
+    public static final String NOT_FOUND_CODE = "404";
+    public static final String BAD_GATEWAY_CODE = "502";
+    public static final String GATEWAY_TIMEOUT_CODE = "504";
     public static final String SERVER_ERROR_DESCRIPTION = "Server error";
     public static final String SERVER_ERROR_CODE = "500";
 }
