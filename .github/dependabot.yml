@@ -5,6 +5,9 @@ updates:
   schedule:
     interval: weekly
   ignore:
+    # MicroProfile OpenAPI 4.0+ is compiled targeting Java 11+, but pnc-api requires
+    # Java 8 bytecode compatibility (<maven.compiler.release>8</maven.compiler.release>)
+    # for compile/runtime scope as enforced by the maven-enforcer-plugin.
     - dependency-name: "org.eclipse.microprofile.openapi:microprofile-openapi-api"
       versions: [ ">=4.0.0" ]
     # hibernate-validator 7.x+ switched from javax.* (Bean Validation 2.0) to jakarta.*
